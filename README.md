@@ -66,7 +66,6 @@
     </div>
 
     <div class="footer">
-        <p>"Love is not about how many days, months, or years you have been together. Love is about how much you love each other every single day."</p>
     </div>
 
 </body>
