@@ -13,20 +13,29 @@
             text-align: center;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
         }
         h1 {
             font-family: 'Great Vibes', cursive;
             font-size: 3em;
-            margin-top: 50px;
+            margin: 20px;
         }
         .message {
             font-size: 1.5em;
-            margin: 20px;
+            margin: 10px;
         }
-        .lily-image {
-            width: 300px;
-            height: auto;
-            margin: 20px;
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            position: relative;
         }
         .button {
             background-color: #B22222; /* Firebrick */
@@ -37,10 +46,24 @@
             font-size: 1.2em;
             cursor: pointer;
             text-decoration: none;
+            transition: background-color 0.3s;
+            position: relative;
+        }
+        .button:hover {
+            background-color: #FF6347; /* Tomato */
         }
         .footer {
-            margin-top: 50px;
+            margin-top: 30px;
             font-size: 1em;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+            .button {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
         }
     </style>
 </head>
@@ -48,25 +71,36 @@
 
     <h1>Will You Be My Valentine?</h1>
     <div class="message">
-        <p>Hello, Raina,</p>
-        <p> Can I be your valenites date??.</p>
-    </div>
-    
-    <img src="https://ph.pinterest.com/pin/390546598954560476/" alt="Lilies" class="lily-image"> <!-- Replace with a real image URL -->
-
-    <div>
-        <audio controls>
-            <source src="https://example.com/everyone-adores-you.mp3" type="audio/mpeg"> <!-- Replace with a real audio URL -->
-            Your browser does not support the audio element.
-        </audio>
+        <p>Hey Babyy :3</p>
     </div>
 
-    <div>
-        <a href="mailto:your-email@example.com?subject=Yes%20to%20Valentine&body=I%20would%20love%20to%20be%20your%20Valentine!" class="button">Say Yes!</a>
+    <audio id="valentineSong" src="https://docs.google.com/uc?export=download&id=1xqjwLtFFrFHiZ_a_nD0zV9hCPQyLJTXw"></audio>
+    <audio id="loveSong" src="https://open.spotify.com/track/4HFAhNtnR6mXagPhUBqY07" type="audio/mpeg"></audio>
+
+    <div class="button-container">
+        <button class="button" id="yesButton" onclick="playLoveSong()">Yes!</button>
+        <button class="button" id="noButton" onmouseover="moveNoButton(event)">No!</button>
     </div>
 
-    <div class="footer">
-    </div>
+    <div class="footer"></div>
+
+    <script>
+        function playLoveSong() {
+            const loveSong = document.getElementById("loveSong");
+            loveSong.play();
+            alert("Yay! Can't wait to spend Valentine's with you ❤️");
+        }
+
+        function moveNoButton(event) {
+            event.preventDefault();
+            const noButton = document.getElementById('noButton');
+            const randomX = Math.random() * (window.innerWidth - 200);
+            const randomY = Math.random() * (window.innerHeight - 100);
+            noButton.style.position = 'absolute';
+            noButton.style.left = `${randomX}px`;
+            noButton.style.top = `${randomY}px`;
+        }
+    </script>
 
 </body>
 </html>
