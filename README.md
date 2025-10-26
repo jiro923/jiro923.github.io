@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,14 +24,18 @@
             --gray-medium: #E0E0E0;
             --success: #4CAF50;
             --danger: #F44336;
+            --gold: #FFD700;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
         body {
-            background-color: var(--gray-light);
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ed 100%);
             color: var(--black);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            line-height: 1.6;
         }
 
         .container {
@@ -39,81 +44,210 @@
             padding: 0 20px;
         }
 
-        /* Header Styles */
+        /* Improved Header Styles */
         header {
-            background-color: var(--wood-dark);
-            padding: 15px 0;
-            border-bottom: 3px solid var(--accent);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, var(--wood-dark) 0%, var(--accent) 100%);
+            padding: 0;
+            border-bottom: none;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), #FFA000, var(--gold));
+            z-index: 2;
         }
 
         .header-content {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            padding: 20px 0;
+            position: relative;
         }
 
         .logo {
             display: flex;
             align-items: center;
+            gap: 20px;
         }
 
         .logo-image {
-            width: 60px;
-            height: 60px;
-            margin-right: 15px;
+            width: 80px;
+            height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 8px;
+            border-radius: 16px;
             overflow: hidden;
-            background-color: var(--wood-light);
-            border: 2px solid var(--accent);
+            background: linear-gradient(135deg, var(--wood-light) 0%, var(--wood-medium) 100%);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .logo-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
 
         .logo-image img {
             width: 100%;
             height: 100%;
             object-fit: contain;
+            padding: 8px;
         }
 
-        .logo-text h1 {
-            font-size: 28px;
+        .logo-text {
             color: var(--white);
         }
 
+        .logo-text h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.5px;
+        }
+
         .logo-text p {
-            font-size: 14px;
+            font-size: 16px;
             color: var(--wood-light);
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .header-stats {
+            display: flex;
+            gap: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 25px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-item {
+            text-align: center;
+            color: var(--white);
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--gold);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
         }
 
         /* Main Content Styles */
         main {
             flex: 1;
-            padding: 30px 0;
+            padding: 40px 0;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .dashboard-title {
+            font-size: 28px;
+            color: var(--wood-dark);
+            font-weight: 600;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            font-size: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--wood-medium) 0%, var(--wood-dark) 100%);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(93, 64, 55, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--wood-dark);
+            border: 1px solid var(--wood-light);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gray-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, var(--success) 0%, #3d8b40 100%);
+            color: var(--white);
+        }
+
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(76, 175, 80, 0.4);
         }
 
         .sheet-container {
             background-color: var(--white);
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
             overflow: hidden;
             border: 1px solid var(--gray-medium);
+            margin-bottom: 30px;
         }
 
         .sheet-header {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.5fr 2fr 2fr 80px;
-            background-color: var(--wood-medium);
+            background: linear-gradient(135deg, var(--wood-medium) 0%, var(--wood-dark) 100%);
             color: var(--white);
-            font-weight: bold;
+            font-weight: 600;
             border-bottom: 1px solid var(--accent);
         }
 
         .sheet-header-cell {
-            padding: 15px 10px;
+            padding: 18px 12px;
             text-align: center;
-            border-right: 1px solid var(--accent);
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 15px;
         }
 
         .sheet-header-cell:last-child {
@@ -129,15 +263,17 @@
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.5fr 2fr 2fr 80px;
             border-bottom: 1px solid var(--gray-medium);
-            transition: background-color 0.2s;
+            transition: all 0.3s ease;
         }
 
         .sheet-row:hover {
-            background-color: var(--gray-light);
+            background-color: rgba(141, 110, 99, 0.05);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
         .sheet-cell {
-            padding: 12px 10px;
+            padding: 15px 12px;
             border-right: 1px solid var(--gray-medium);
             display: flex;
             align-items: center;
@@ -151,10 +287,11 @@
         .sheet-cell input, .sheet-cell textarea {
             width: 100%;
             border: none;
-            padding: 8px 5px;
+            padding: 10px 8px;
             background: transparent;
             font-size: 14px;
             resize: none;
+            transition: background-color 0.2s;
         }
 
         .sheet-cell input:focus, .sheet-cell textarea:focus {
@@ -167,14 +304,18 @@
             background: none;
             border: none;
             cursor: pointer;
-            padding: 5px;
-            border-radius: 4px;
-            transition: background-color 0.2s;
+            padding: 8px;
+            border-radius: 6px;
+            transition: all 0.2s;
             color: var(--wood-medium);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .action-btn:hover {
             background-color: var(--gray-medium);
+            transform: scale(1.1);
         }
 
         .delete-btn {
@@ -188,135 +329,137 @@
         .totals-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 30px;
+            gap: 25px;
+            margin-bottom: 30px;
         }
 
         .total-card {
-            background-color: var(--white);
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid var(--wood-medium);
+            background: linear-gradient(135deg, var(--white) 0%, #f9f9f9 100%);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--wood-medium);
+            transition: transform 0.3s ease;
+        }
+
+        .total-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
 
         .total-card h3 {
             color: var(--wood-dark);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             font-size: 18px;
+            font-weight: 600;
         }
 
         .total-amount {
-            font-size: 28px;
-            font-weight: bold;
+            font-size: 32px;
+            font-weight: 700;
             color: var(--accent);
         }
 
-        .controls {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s;
-        }
-
-        .btn-primary {
-            background-color: var(--wood-medium);
-            color: var(--white);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--wood-dark);
-        }
-
-        .btn-secondary {
-            background-color: var(--gray-medium);
-            color: var(--black);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--gray-light);
-        }
-
-        .btn-success {
-            background-color: var(--success);
-            color: var(--white);
-        }
-
-        .btn-success:hover {
-            background-color: #3d8b40;
-        }
-
         .data-management {
-            background-color: var(--white);
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, var(--white) 0%, #f9f9f9 100%);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--shadow);
             border: 1px solid var(--gray-medium);
         }
 
         .data-management h3 {
             color: var(--wood-dark);
-            margin-bottom: 15px;
-            font-size: 18px;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .data-management h3 i {
+            color: var(--wood-medium);
         }
 
         .data-controls {
             display: flex;
-            gap: 10px;
+            gap: 15px;
             flex-wrap: wrap;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .data-input {
             flex: 1;
-            min-width: 200px;
-            padding: 10px;
+            min-width: 250px;
+            padding: 12px 15px;
             border: 1px solid var(--gray-medium);
-            border-radius: 4px;
-            font-size: 14px;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+
+        .data-input:focus {
+            outline: none;
+            border-color: var(--wood-medium);
+            box-shadow: 0 0 0 3px rgba(141, 110, 99, 0.2);
         }
 
         .saved-files {
-            margin-top: 15px;
+            margin-top: 20px;
+        }
+
+        .saved-files h4 {
+            color: var(--wood-dark);
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: 600;
         }
 
         .file-list {
-            max-height: 150px;
+            max-height: 200px;
             overflow-y: auto;
             border: 1px solid var(--gray-medium);
-            border-radius: 4px;
-            padding: 10px;
+            border-radius: 8px;
+            padding: 15px;
             background-color: var(--gray-light);
         }
 
         .file-item {
             display: flex;
             justify-content: space-between;
-            padding: 8px;
+            align-items: center;
+            padding: 12px 15px;
             border-bottom: 1px solid var(--gray-medium);
+            transition: background-color 0.2s;
+        }
+
+        .file-item:hover {
+            background-color: rgba(255, 255, 255, 0.7);
         }
 
         .file-item:last-child {
             border-bottom: none;
         }
 
+        .file-info {
+            flex: 1;
+        }
+
+        .file-name {
+            font-weight: 600;
+            color: var(--wood-dark);
+            margin-bottom: 5px;
+        }
+
+        .file-date {
+            font-size: 13px;
+            color: var(--wood-medium);
+        }
+
         .file-actions {
             display: flex;
-            gap: 5px;
+            gap: 10px;
         }
 
         /* Modal Styles */
@@ -327,95 +470,211 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.6);
             z-index: 1000;
             align-items: center;
             justify-content: center;
+            backdrop-filter: blur(5px);
         }
 
         .modal-content {
             background-color: var(--white);
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
             width: 90%;
             max-width: 700px;
             max-height: 80vh;
             overflow-y: auto;
+            animation: modalAppear 0.3s ease;
+        }
+
+        @keyframes modalAppear {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--gray-medium);
         }
 
         .modal-title {
-            font-size: 20px;
+            font-size: 22px;
             color: var(--wood-dark);
+            font-weight: 600;
         }
 
         .close-modal {
             background: none;
             border: none;
-            font-size: 24px;
+            font-size: 28px;
             cursor: pointer;
             color: var(--wood-medium);
+            transition: color 0.2s;
+        }
+
+        .close-modal:hover {
+            color: var(--accent);
         }
 
         .modal-body {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .modal-footer {
             display: flex;
             justify-content: flex-end;
-            gap: 10px;
+            gap: 15px;
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-weight: 600;
             color: var(--wood-dark);
         }
 
         .form-group input, .form-group textarea {
             width: 100%;
-            padding: 10px;
+            padding: 12px 15px;
             border: 1px solid var(--gray-medium);
-            border-radius: 4px;
-            font-size: 14px;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--wood-medium);
+            box-shadow: 0 0 0 3px rgba(141, 110, 99, 0.2);
         }
 
         .form-group textarea {
-            min-height: 80px;
+            min-height: 100px;
             resize: vertical;
         }
 
         .client-details-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: 20px;
         }
 
         .full-width {
             grid-column: 1 / -1;
         }
 
-        /* Footer Styles */
+        /* Improved Footer Styles */
         footer {
-            background-color: var(--wood-dark);
-            padding: 15px 0;
-            border-top: 3px solid var(--accent);
-            text-align: center;
+            background: linear-gradient(135deg, var(--wood-dark) 0%, var(--accent) 100%);
+            padding: 40px 0 20px;
             color: var(--wood-light);
-            margin-top: 30px;
+            margin-top: 50px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), #FFA000, var(--gold));
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        .footer-section p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--wood-light);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .contact-info i {
+            color: var(--gold);
+            font-size: 18px;
+            margin-top: 2px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            opacity: 0.8;
         }
 
         /* Responsive Design */
@@ -430,6 +689,16 @@
             }
         }
 
+        @media (max-width: 1200px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .header-stats {
+                display: none;
+            }
+        }
+
         @media (max-width: 992px) {
             .sheet-header, .sheet-row {
                 grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr 80px;
@@ -439,16 +708,22 @@
             .sheet-cell:nth-child(7) {
                 display: none;
             }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
         }
 
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
                 text-align: center;
+                gap: 20px;
             }
             
             .logo {
-                margin-bottom: 15px;
+                margin-bottom: 0;
             }
             
             .sheet-header, .sheet-row {
@@ -475,32 +750,48 @@
             .client-details-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-<header>
-    <div class="container">
-        <div class="header-content">
-            <div class="logo">
-                <div class="logo-image">
-                    <!-- Your actual logo - will work on all devices -->
-                    <img src="https://i.postimg.cc/Tp5m4YKd/logo.jpg" alt="Wooden Racks Logo" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, #D7CCC8 0%, #8D6E63 100%);color:#5D4037;font-weight:bold;font-size:14px;text-align:center;\>WR</div>';">
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-image">
+                        <img src="https://i.postimg.cc/Tp5m4YKd/logo.jpg" alt="Wooden Racks Logo" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\"width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, #D7CCC8 0%, #8D6E63 100%);color:#5D4037;font-weight:bold;font-size:20px;border-radius:16px;\">WR</div>';">
+                    </div>
+                    <div class="logo-text">
+                        <h1>Wooden Racks</h1>
+                        <p>Professional Payment Tracking System</p>
+                    </div>
                 </div>
-                <div class="logo-text">
-                    <h1>Wooden Racks</h1>
-                    <p>Payment Tracking Sheet</p>
+                <div class="header-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="header-total-down">₱0.00</div>
+                        <div class="stat-label">Down Payments</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="header-total-full">₱0.00</div>
+                        <div class="stat-label">Full Payments</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="header-total-clients">0</div>
+                        <div class="stat-label">Active Clients</div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
+
     <main>
         <div class="container">
-            <div class="controls">
-                <button class="btn btn-primary" id="add-row-btn">
-                    <i class="fas fa-plus"></i> Add New Client
-                </button>
+            <div class="dashboard-header">
+                <h2 class="dashboard-title">Payment Tracking Dashboard</h2>
                 <div class="data-controls">
                     <button class="btn btn-success" id="save-file-btn">
                         <i class="fas fa-save"></i> Save As New File
@@ -509,6 +800,12 @@
                         <i class="fas fa-folder-open"></i> Load File
                     </button>
                 </div>
+            </div>
+            
+            <div class="controls">
+                <button class="btn btn-primary" id="add-row-btn">
+                    <i class="fas fa-plus"></i> Add New Client
+                </button>
             </div>
             
             <div class="sheet-container">
@@ -530,26 +827,27 @@
             
             <div class="totals-section">
                 <div class="total-card">
-                    <h3>Total Down Payments</h3>
+                    <h3><i class="fas fa-money-bill-wave"></i> Total Down Payments</h3>
                     <div class="total-amount" id="total-downpayment">₱0.00</div>
                 </div>
                 <div class="total-card">
-                    <h3>Total Full Payments</h3>
+                    <h3><i class="fas fa-wallet"></i> Total Full Payments</h3>
                     <div class="total-amount" id="total-fullpayment">₱0.00</div>
                 </div>
             </div>
 
             <div class="data-management">
-                <h3>Current Data File: <span id="current-file-name">Unsaved Data</span></h3>
+                <h3><i class="fas fa-database"></i> Data Management</h3>
+                <p>Current Data File: <strong id="current-file-name">Unsaved Data</strong></p>
                 <div class="data-controls">
-                    <input type="text" id="file-name-input" class="data-input" placeholder="Enter file name">
+                    <input type="text" id="file-name-input" class="data-input" placeholder="Enter file name for saving">
                     <button class="btn btn-success" id="save-named-btn">
                         <i class="fas fa-save"></i> Save with Name
                     </button>
                 </div>
                 
                 <div class="saved-files">
-                    <h4>Saved Files</h4>
+                    <h4><i class="fas fa-folder"></i> Saved Files</h4>
                     <div class="file-list" id="file-list">
                         <!-- Saved files will appear here -->
                     </div>
@@ -628,6 +926,42 @@
 
     <footer>
         <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Wooden Racks</h3>
+                    <p>Professional payment tracking system for managing client transactions, down payments, and full payments with ease and efficiency.</p>
+                    <p>Streamline your business finances with our intuitive tracking solution.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+                        <li><a href="#"><i class="fas fa-users"></i> Clients</a></li>
+                        <li><a href="#"><i class="fas fa-chart-bar"></i> Reports</a></li>
+                        <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Business Ave, Suite 100<br>Manila, Philippines</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+63 912 345 6789</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@woodenracks.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Wooden Racks Payment Tracker. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
@@ -643,6 +977,11 @@
             const currentFileName = document.getElementById('current-file-name');
             const totalDownpaymentEl = document.getElementById('total-downpayment');
             const totalFullpaymentEl = document.getElementById('total-fullpayment');
+            
+            // Header stats elements
+            const headerTotalDown = document.getElementById('header-total-down');
+            const headerTotalFull = document.getElementById('header-total-full');
+            const headerTotalClients = document.getElementById('header-total-clients');
             
             // Modal elements
             const fileModal = document.getElementById('file-modal');
@@ -857,9 +1196,15 @@
             function updateTotals() {
                 const totalDownpayment = clients.reduce((sum, client) => sum + (parseFloat(client.downpayment) || 0), 0);
                 const totalFullpayment = clients.reduce((sum, client) => sum + (parseFloat(client.fullpayment) || 0), 0);
+                const totalClients = clients.filter(client => client.name.trim() !== '').length;
                 
                 totalDownpaymentEl.textContent = `₱${totalDownpayment.toFixed(2)}`;
                 totalFullpaymentEl.textContent = `₱${totalFullpayment.toFixed(2)}`;
+                
+                // Update header stats
+                headerTotalDown.textContent = `₱${totalDownpayment.toFixed(2)}`;
+                headerTotalFull.textContent = `₱${totalFullpayment.toFixed(2)}`;
+                headerTotalClients.textContent = totalClients;
             }
             
             // Save data to localStorage with a specific name (creates new file)
@@ -1004,9 +1349,9 @@
                     const fileDate = new Date(file.timestamp).toLocaleDateString();
                     
                     fileItem.innerHTML = `
-                        <div>
-                            <strong>${file.name}</strong>
-                            <div style="font-size: 12px; color: #666;">Saved: ${fileDate}</div>
+                        <div class="file-info">
+                            <div class="file-name">${file.name}</div>
+                            <div class="file-date">Saved: ${fileDate}</div>
                         </div>
                         <div class="file-actions">
                             <button class="action-btn load-file-btn" data-id="${file.id}" title="Load File">
