@@ -419,7 +419,7 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 1200px) {
+        @media (max-width: 2000px) {
             .sheet-header, .sheet-row {
                 grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.5fr 80px;
             }
