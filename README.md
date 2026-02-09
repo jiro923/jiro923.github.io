@@ -443,7 +443,7 @@
         </div>
         
         <div class="footer">
-            Made with <i class="fas fa-heart" style="color: #d32f2f;"></i> 2/14/26
+             <i class="fas fa-heart" style="color: #d32f2f;"></i> 2/14/26
         </div>
     </div>
 
