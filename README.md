@@ -67,76 +67,34 @@
         }
         
         .snoopy-container {
-            height: 220px;
+            height: 250px;
             position: relative;
             margin: 30px 0;
             overflow: hidden;
             border-radius: 15px;
             background-color: #ffecb3;
             border: 5px dashed #d32f2f;
+            background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: multiply;
         }
         
-        .snoopy {
+        .snoopy-img {
             position: absolute;
             bottom: 20px;
-            left: -150px;
-            width: 150px;
-            height: 150px;
-            background-color: white;
-            border-radius: 50% 50% 45% 45%;
-            animation: walk 8s linear forwards;
+            left: -200px;
+            width: 180px;
+            height: auto;
+            animation: walk 10s linear forwards;
             animation-delay: 1s;
-        }
-        
-        .snoopy:before, .snoopy:after {
-            content: '';
-            position: absolute;
-            background-color: white;
-        }
-        
-        .snoopy:before {
-            width: 60px;
-            height: 50px;
-            border-radius: 50%;
-            top: -25px;
-            left: 45px;
-            box-shadow: 0 5px 0 #333;
-        }
-        
-        .snoopy:after {
-            width: 90px;
-            height: 40px;
-            border-radius: 50%;
-            top: -15px;
-            left: 30px;
-        }
-        
-        .snoopy-ear {
-            position: absolute;
-            width: 40px;
-            height: 60px;
-            background-color: black;
-            border-radius: 50%;
-            top: -10px;
-            left: 55px;
-            transform: rotate(-20deg);
-        }
-        
-        .snoopy-body {
-            position: absolute;
-            width: 120px;
-            height: 100px;
-            background-color: white;
-            border-radius: 45% 45% 40% 40%;
-            top: 70px;
-            left: 15px;
-            box-shadow: inset 0 -5px 0 #f5f5f5;
+            filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.3));
         }
         
         .speech-bubble {
             position: absolute;
             top: 50px;
-            left: 180px;
+            left: 200px;
             background-color: white;
             padding: 15px 20px;
             border-radius: 20px;
@@ -146,7 +104,8 @@
             text-align: left;
             opacity: 0;
             animation: fadeIn 0.5s forwards;
-            animation-delay: 6s;
+            animation-delay: 8s;
+            z-index: 10;
         }
         
         .speech-bubble:after {
@@ -353,10 +312,28 @@
         }
         
         @keyframes walk {
-            0% { left: -150px; }
-            30% { left: 30%; }
-            70% { left: 60%; }
-            100% { left: calc(100% - 150px); }
+            0% { 
+                left: -200px;
+                transform: scaleX(1);
+            }
+            30% { 
+                left: 30%;
+                transform: scaleX(1);
+            }
+            50% {
+                transform: scaleX(1);
+            }
+            51% {
+                transform: scaleX(-1); /* Flip to face left */
+            }
+            70% { 
+                left: 60%;
+                transform: scaleX(-1); /* Keep flipped */
+            }
+            100% { 
+                left: calc(100% - 180px);
+                transform: scaleX(1); /* Face right again at the end */
+            }
         }
         
         @keyframes fadeIn {
@@ -379,13 +356,41 @@
             100% { transform: scale(20); opacity: 0; }
         }
         
+        /* Snoopy footprint trail */
+        .footprint {
+            position: absolute;
+            bottom: 20px;
+            width: 30px;
+            height: 15px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            opacity: 0;
+        }
+        
         /* Responsive design */
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
             .proposal-text { font-size: 1.8rem; }
             .response-buttons { flex-direction: column; gap: 20px; }
             .response-btn { padding: 15px 30px; }
-            .snoopy-container { height: 180px; }
+            .snoopy-container { height: 200px; }
+            .snoopy-img { width: 150px; }
+            .speech-bubble {
+                max-width: 250px;
+                left: 150px;
+                top: 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .snoopy-img { width: 120px; }
+            .speech-bubble {
+                max-width: 200px;
+                left: 100px;
+                top: 20px;
+                padding: 10px 15px;
+            }
+            .speech-bubble p { font-size: 1rem; }
         }
     </style>
 </head>
@@ -398,10 +403,8 @@
         
         <div class="valentine-card">
             <div class="snoopy-container">
-                <div class="snoopy">
-                    <div class="snoopy-ear"></div>
-                    <div class="snoopy-body"></div>
-                </div>
+                <!-- Real Snoopy image -->
+                <img src="https://www.pngmart.com/files/22/Snoopy-PNG-Isolated-HD.png" alt="Snoopy" class="snoopy-img" id="snoopyImage">
                 <div class="speech-bubble">
                     <p>Hello <span class="cesca-name">Cesca</span>, I really had a great time with you today. Thank you for this wonderful Valentine's Day!</p>
                 </div>
@@ -432,15 +435,17 @@
                     <p class="playlist-description">I've put together a collection of songs that remind me of you and our special moments together. Scan the QR code or click the link below to listen!</p>
                     
                     <div class="qr-code">
-                        <!-- This would be a QR code image in a real implementation -->
+                        <!-- QR Code for Spotify Playlist -->
+                        <!-- In a real implementation, generate a QR code image -->
                         <div style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: white; color: #333;">
                             <i class="fab fa-spotify" style="font-size: 60px; color: #1db954; margin-bottom: 10px;"></i>
                             <div style="font-weight: bold; text-align: center;">Spotify Playlist<br>Scan with phone</div>
+                            <div style="font-size: 0.8rem; margin-top: 10px; color: #666;">jiro923.github.io/valentine</div>
                         </div>
                     </div>
                     
                     <a href="https://open.spotify.com/playlist/6FF9QQMTbt2tVxKWy1cj4Q?si=a58c552501ef46f0" target="_blank" class="spotify-link">
-                        <i class="fab fa-spotify"></i> Open in Spotify
+                        <i class="fab fa-spotify"></i> Open Our Playlist in Spotify
                     </a>
                 </div>
             </div>
@@ -458,6 +463,15 @@
         const yesBtn = document.getElementById('yesBtn');
         const noBtn = document.getElementById('noBtn');
         const playlistContainer = document.getElementById('playlistContainer');
+        const snoopyImage = document.getElementById('snoopyImage');
+        
+        // Different Snoopy images to choose from
+        const snoopyImages = [
+            'https://www.pngmart.com/files/22/Snoopy-PNG-Isolated-HD.png',
+            'https://www.freepnglogos.com/uploads/snoopy-png/snoopy-png-transparent-snoopy-images-pluspng-15.png',
+            'https://static.wikia.nocookie.net/peanuts/images/9/90/Snoopy.png/revision/latest?cb=20200523200727',
+            'https://www.pngplay.com/wp-content/uploads/12/Snoopy-Transparent-PNG.png'
+        ];
         
         // Create hearts for background decoration
         function createHearts() {
@@ -474,6 +488,33 @@
                 heart.style.animationDelay = Math.random() * 5 + 's';
                 container.appendChild(heart);
             }
+        }
+        
+        // Create footprints for Snoopy's walk
+        function createFootprints() {
+            const container = document.querySelector('.snoopy-container');
+            const positions = [10, 25, 40, 55, 70, 85]; // percentages across the container
+            
+            positions.forEach(pos => {
+                const footprint = document.createElement('div');
+                footprint.className = 'footprint';
+                footprint.style.left = `${pos}%`;
+                
+                // Alternate left/right footprints
+                if (pos % 20 === 0) {
+                    footprint.style.transform = 'scaleX(-1)';
+                }
+                
+                container.appendChild(footprint);
+                
+                // Animate footprint appearance
+                setTimeout(() => {
+                    footprint.style.opacity = '0.7';
+                    setTimeout(() => {
+                        footprint.style.opacity = '0';
+                    }, 3000);
+                }, (pos / 10) * 1000);
+            });
         }
         
         // Create fireworks effect
@@ -534,8 +575,26 @@
         
         // Snoopy walking animation
         function startSnoopyAnimation() {
-            const snoopy = document.querySelector('.snoopy');
-            snoopy.style.animation = 'walk 8s linear forwards';
+            // Reset Snoopy position
+            snoopyImage.style.left = '-200px';
+            snoopyImage.style.animation = 'walk 10s linear forwards';
+            snoopyImage.style.animationDelay = '1s';
+            
+            // Create footprints after a delay
+            setTimeout(createFootprints, 1500);
+            
+            // Make Snoopy dance at the end
+            setTimeout(() => {
+                snoopyImage.style.animation = 'none';
+                // Add a little bounce
+                snoopyImage.style.animation = 'pulse 1s infinite alternate';
+            }, 11000);
+        }
+        
+        // Change Snoopy image function
+        function changeSnoopyImage() {
+            const randomIndex = Math.floor(Math.random() * snoopyImages.length);
+            snoopyImage.src = snoopyImages[randomIndex];
         }
         
         // Event Listeners
@@ -552,6 +611,9 @@
             setTimeout(createConfetti, 500);
             setTimeout(createFireworks, 1000);
             
+            // Make Snoopy dance
+            snoopyImage.style.animation = 'pulse 0.5s infinite alternate';
+            
             // Play a sound effect (in a real implementation)
             console.log("Fireworks and celebration!");
         });
@@ -560,6 +622,10 @@
             // More celebration
             createFireworks();
             createConfetti();
+            
+            // Change Snoopy to a happy version
+            snoopyImage.src = 'https://www.pngmart.com/files/22/Snoopy-Jumping-PNG-Image.png';
+            snoopyImage.style.animation = 'pulse 0.3s infinite alternate';
             
             // Hide proposal, show playlist
             proposalContainer.style.display = 'none';
@@ -570,6 +636,10 @@
             setTimeout(createFireworks, 300);
             setTimeout(createConfetti, 600);
             setTimeout(createFireworks, 900);
+            setTimeout(() => {
+                createConfetti();
+                createFireworks();
+            }, 1200);
         });
         
         noBtn.addEventListener('click', function() {
@@ -585,8 +655,16 @@
             yesBtn.style.transform = 'scale(1.2)';
             yesBtn.style.transition = 'transform 0.3s';
             
+            // Change Snoopy to a sad version
+            snoopyImage.src = 'https://www.pngmart.com/files/22/Snoopy-PNG-Pic.png';
+            
             // Show a message
-            alert("Just kidding! You have to click YES! 😉");
+            alert("Just kidding! You have to click YES! 😉\nSnoopy is sad when you say no!");
+            
+            // Reset Snoopy after a moment
+            setTimeout(() => {
+                snoopyImage.src = 'https://www.pngmart.com/files/22/Snoopy-PNG-Isolated-HD.png';
+            }, 2000);
         });
         
         // Initialize the page
@@ -596,6 +674,18 @@
             
             // Auto-scroll to center the content
             window.scrollTo(0, 0);
+            
+            // Optional: Change Snoopy image every 15 seconds
+            // setInterval(changeSnoopyImage, 15000);
+            
+            // Click on Snoopy for a surprise
+            snoopyImage.addEventListener('click', function() {
+                createConfetti();
+                snoopyImage.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    snoopyImage.style.transform = 'scale(1)';
+                }, 300);
+            });
         });
     </script>
 </body>
