@@ -21,31 +21,29 @@
             align-items: center;
             overflow-x: hidden;
             color: #333;
+            padding: 20px;
         }
         
         .container {
             width: 100%;
-            max-width: 900px;
-            padding: 20px;
+            max-width: 800px;
             text-align: center;
-            position: relative;
-            z-index: 1;
         }
         
         .header {
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
         
         h1 {
             color: #d32f2f;
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             text-shadow: 3px 3px 0 #ffeb3b;
             margin-bottom: 10px;
         }
         
         .subtitle {
             color: #d32f2f;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: bold;
             background-color: #ffeb3b;
             padding: 8px 20px;
@@ -54,29 +52,15 @@
             border: 3px solid #d32f2f;
         }
         
-        .valentine-card {
-            background-color: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(211, 47, 47, 0.2);
-            border: 8px solid #ffeb3b;
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 40px;
-        }
-        
-        .card-content {
-            padding: 20px;
-        }
-        
-        .snoopy-container {
+        /* BOX 1: Snoopy Box */
+        .snoopy-box {
+            background-color: #d32f2f;
+            border-radius: 15px;
+            border: 5px dashed #ffeb3b;
             height: 250px;
             position: relative;
-            margin: 30px 0;
+            margin-bottom: 30px;
             overflow: hidden;
-            border-radius: 15px;
-            background-color: #d32f2f;
-            border: 5px dashed #ffeb3b;
         }
         
         .snoopy-img {
@@ -122,25 +106,6 @@
             line-height: 1.4;
         }
         
-        .message-box {
-            margin: 30px 0;
-            padding: 20px;
-            background-color: #ffebee;
-            border-radius: 15px;
-            border-left: 8px solid #d32f2f;
-        }
-        
-        .message-box h2 {
-            color: #d32f2f;
-            margin-bottom: 15px;
-        }
-        
-        .message-box p {
-            font-size: 1.2rem;
-            color: #5d4037;
-            line-height: 1.6;
-        }
-        
         .cesca-name {
             color: #d32f2f;
             font-weight: bold;
@@ -150,141 +115,103 @@
             border-radius: 10px;
         }
         
-        .button-container {
-            margin: 40px 0;
+        /* BOX 2: Message Box */
+        .message-box {
+            background-color: #ffebee;
+            border-radius: 15px;
+            border-left: 8px solid #d32f2f;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: left;
         }
         
-        /* Simple Gift Box */
-        .gift-container {
-            width: 300px;
-            height: 200px;
-            margin: 0 auto;
-            position: relative;
-            cursor: pointer;
+        .message-box h2 {
+            color: #d32f2f;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
         }
         
+        .message-box p {
+            font-size: 1.2rem;
+            color: #5d4037;
+            line-height: 1.6;
+        }
+        
+        /* BOX 3: Gift Box */
         .gift-box {
-            width: 300px;
-            height: 200px;
             background-color: #d32f2f;
             border-radius: 15px;
+            height: 200px;
             position: relative;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            cursor: pointer;
             overflow: hidden;
-        }
-        
-        .gift-ribbon {
-            width: 100%;
-            height: 40px;
-            background-color: #ffeb3b;
-            position: absolute;
-            top: 80px;
-            left: 0;
-        }
-        
-        .gift-bow {
-            width: 60px;
-            height: 60px;
-            background-color: #ffeb3b;
-            border-radius: 50%;
-            position: absolute;
-            top: 70px;
-            left: 120px;
-            z-index: 2;
-        }
-        
-        .gift-bow:before,
-        .gift-bow:after {
-            content: '';
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            background-color: #ffeb3b;
-            border-radius: 50%;
-            top: -15px;
-        }
-        
-        .gift-bow:before {
-            left: -20px;
-        }
-        
-        .gift-bow:after {
-            right: -20px;
         }
         
         .gift-lid {
-            width: 300px;
-            height: 50px;
+            width: 100%;
+            height: 60px;
             background-color: #b71c1c;
-            border-radius: 15px 15px 0 0;
             position: absolute;
             top: 0;
             left: 0;
-            transition: transform 0.5s ease;
-            transform-origin: bottom;
-        }
-        
-        .gift-question {
-            width: 300px;
-            height: 150px;
-            background-color: white;
-            border-radius: 0 0 15px 15px;
-            position: absolute;
-            bottom: 0;
-            left: 0;
+            transition: all 0.8s ease;
+            border-radius: 15px 15px 0 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.8rem;
-            color: #d32f2f;
+            color: white;
+            font-size: 1.3rem;
             font-weight: bold;
+        }
+        
+        .gift-lid i {
+            margin-right: 10px;
+        }
+        
+        .gift-body {
+            width: 100%;
+            height: 140px;
+            background-color: #d32f2f;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border-radius: 0 0 15px 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
+        }
+        
+        .gift-question {
+            font-size: 2.2rem;
+            color: white;
+            font-weight: bold;
             text-align: center;
             opacity: 0;
             transition: opacity 0.5s ease;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
         }
         
-        .gift-container.opened .gift-lid {
-            transform: rotateX(90deg);
+        .gift-box.opened .gift-lid {
+            height: 0;
+            opacity: 0;
         }
         
-        .gift-container.opened .gift-question {
+        .gift-box.opened .gift-question {
             opacity: 1;
         }
         
-        .gift-instruction {
-            margin-top: 20px;
-            color: #d32f2f;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-        
-        .proposal-container {
+        /* Response buttons */
+        .response-container {
             display: none;
-            margin-top: 40px;
-            padding: 30px;
-            background-color: #fffde7;
-            border-radius: 20px;
-            border: 5px solid #ffeb3b;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .proposal-text {
-            font-size: 2.5rem;
-            color: #d32f2f;
-            font-weight: bold;
-            margin-bottom: 40px;
-            text-shadow: 2px 2px 0 #ffecb3;
-            animation: pulse 1.5s infinite alternate;
+            margin-top: 30px;
         }
         
         .response-buttons {
             display: flex;
             justify-content: center;
             gap: 40px;
-            margin-top: 30px;
+            margin-top: 20px;
         }
         
         .response-btn {
@@ -312,6 +239,7 @@
             transform: scale(1.1);
         }
         
+        /* Playlist */
         .playlist-container {
             display: none;
             margin-top: 40px;
@@ -336,17 +264,6 @@
             margin-right: auto;
         }
         
-        .qr-code {
-            width: 200px;
-            height: 200px;
-            margin: 20px auto;
-            padding: 15px;
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            background: white url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMxREI5NTQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMTMuNWMxLjEgMCAyLS45IDItMnMtLjktMi0yLTItMiAuOS0yIDIgLjkgMiAyIDJ6Ii8+PHBhdGggZD0iTTIwIDkuM3Y3YTIgMiAwIDAgMS0yIDJoLTEuOU0xNSAyMmgyYTIgMiAwIDAgMCAyLTJ2LTEuOU0yMiAxMnYtMi45YTIuMSAyLjEgMCAxIDAtNC4yIDB2M00xMy41IDEyYzAtMS4xLS45LTItMi0ycy0yIC45LTIgMiAuOSAyIDIgMiAyLS45IDItMnptLTkgMGgzbTAgMGgtM00xOSAyMmEyIDIgMCAwIDAgMi0ydi0xLjkiLz48L3N2Zz4=') center/60% no-repeat;
-        }
-        
         .spotify-link {
             display: inline-block;
             margin-top: 20px;
@@ -362,24 +279,6 @@
         .spotify-link:hover {
             background-color: #1ed760;
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(29, 185, 84, 0.4);
-        }
-        
-        .heart {
-            position: absolute;
-            color: #ff5252;
-            font-size: 20px;
-            opacity: 0;
-            z-index: 0;
-        }
-        
-        .firework {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            z-index: 0;
-            pointer-events: none;
         }
         
         .footer {
@@ -388,82 +287,32 @@
             font-size: 1.1rem;
             padding: 20px;
             border-top: 3px dotted #ffeb3b;
-            background-color: #fff8e1;
-            border-radius: 15px;
         }
         
         @keyframes walk {
-            0% { 
-                left: -200px;
-                transform: scaleX(1);
-            }
-            30% { 
-                left: 30%;
-                transform: scaleX(1);
-            }
-            50% {
-                transform: scaleX(1);
-            }
-            51% {
-                transform: scaleX(-1);
-            }
-            70% { 
-                left: 60%;
-                transform: scaleX(-1);
-            }
-            100% { 
-                left: calc(100% - 180px);
-                transform: scaleX(1);
-            }
+            0% { left: -200px; }
+            30% { left: 30%; }
+            70% { left: 60%; }
+            100% { left: calc(100% - 180px); }
         }
         
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes pulse {
-            from { transform: scale(1); }
-            to { transform: scale(1.05); }
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
-        }
-        
-        @keyframes explode {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(20); opacity: 0; }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
         @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            .proposal-text { font-size: 1.8rem; }
-            .response-buttons { flex-direction: column; gap: 20px; }
-            .response-btn { padding: 15px 30px; }
-            .snoopy-container { height: 200px; }
+            h1 { font-size: 2rem; }
+            .snoopy-box, .gift-box { height: 200px; }
             .snoopy-img { width: 150px; }
             .speech-bubble {
                 max-width: 250px;
                 left: 150px;
                 top: 30px;
             }
-            .gift-container, .gift-box, .gift-lid, .gift-question {
-                width: 250px;
-                height: 180px;
-            }
-            .gift-question {
-                height: 130px;
-                font-size: 1.5rem;
-            }
-            .gift-ribbon {
-                top: 70px;
-            }
-            .gift-bow {
-                top: 60px;
-                left: 95px;
-            }
+            .gift-question { font-size: 1.8rem; }
+            .response-buttons { flex-direction: column; gap: 20px; }
+            .response-btn { padding: 15px 30px; font-size: 1.5rem; }
         }
         
         @media (max-width: 480px) {
@@ -475,208 +324,95 @@
                 padding: 10px 15px;
             }
             .speech-bubble p { font-size: 1rem; }
-            .gift-container, .gift-box, .gift-lid, .gift-question {
-                width: 200px;
-                height: 150px;
-            }
-            .gift-question {
-                height: 100px;
-                font-size: 1.2rem;
-            }
-            .gift-ribbon {
-                top: 55px;
-                height: 30px;
-            }
-            .gift-bow {
-                width: 50px;
-                height: 50px;
-                top: 45px;
-                left: 75px;
-            }
-            .gift-bow:before,
-            .gift-bow:after {
-                width: 30px;
-                height: 30px;
-                top: -10px;
-            }
-            .gift-bow:before {
-                left: -15px;
-            }
-            .gift-bow:after {
-                right: -15px;
-            }
+            .gift-question { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1><i class="fas fa-heart"></i> A Snoopy Valentine <i class="fas fa-heart"></i></h1>
+            <h1><i class="fas fa-heart"></i> A Snoopy Valentine</h1>
             <div class="subtitle">For someone very special...</div>
         </div>
         
-        <div class="valentine-card">
-            <div class="snoopy-container">
-                <img src="https://www.pngmart.com/files/22/Snoopy-PNG-Isolated-HD.png" alt="Snoopy" class="snoopy-img" id="snoopyImage">
-                <div class="speech-bubble">
-                    <p>Hello <span class="cesca-name">Cesca</span>, I really had a great time with you today. Thank you for this wonderful Valentine's Day!</p>
-                </div>
-            </div>
-            
-            <div class="card-content">
-                <div class="message-box">
-                    <h2><i class="fas fa-gift"></i> A Special Message</h2>
-                    <p>This Valentine's Day, I wanted to do something special to show you how much you mean to me. You make every day brighter and every moment more meaningful.</p>
-                </div>
-                
-                <div class="button-container">
-                    <div class="gift-container" id="giftContainer">
-                        <div class="gift-box">
-                            <div class="gift-ribbon"></div>
-                            <div class="gift-bow"></div>
-                            <div class="gift-lid"></div>
-                            <div class="gift-question">Can I be your girlfriend?</div>
-                        </div>
-                    </div>
-                    <div class="gift-instruction">
-                        <i class="fas fa-hand-point-up"></i> Click the gift to open!
-                    </div>
-                </div>
-                
-                <div class="proposal-container" id="proposalContainer">
-                    <div class="proposal-text">Can I be your girlfriend?</div>
-                    <div class="response-buttons">
-                        <button class="response-btn yes-btn" id="yesBtn">YES! <i class="fas fa-heart"></i></button>
-                        <button class="response-btn no-btn" id="noBtn">No</button>
-                    </div>
-                </div>
-                
-                <div class="playlist-container" id="playlistContainer">
-                    <h2 class="playlist-title"><i class="fab fa-spotify"></i> For You: Our Playlist</h2>
-                    <p class="playlist-description">I've put together a collection of songs that remind me of you and our special moments together. Scan the QR code or click the link below to listen!</p>
-                    
-                    <div class="qr-code"></div>
-                    
-                    <a href="https://open.spotify.com/playlist/6FF9QQMTbt2tVxKWy1cj4Q?si=a58c552501ef46f0" target="_blank" class="spotify-link">
-                        <i class="fab fa-spotify"></i> Open Our Playlist in Spotify
-                    </a>
-                </div>
+        <!-- BOX 1: Snoopy Box -->
+        <div class="snoopy-box">
+            <img src="https://www.pngmart.com/files/22/Snoopy-PNG-Isolated-HD.png" alt="Snoopy" class="snoopy-img" id="snoopyImage">
+            <div class="speech-bubble">
+                <p>Hello <span class="cesca-name">Cesca</span>, I really had a great time with you today. Thank you for this!</p>
             </div>
         </div>
         
+        <!-- BOX 2: Message Box -->
+        <div class="message-box">
+            <h2>A Special Message</h2>
+            <p>This Valentine's Day, I wanted to do something special to show you how much you mean to me. You make every day brighter.</p>
+        </div>
+        
+        <!-- BOX 3: Gift Box -->
+        <div class="gift-box" id="giftBox">
+            <div class="gift-lid">
+                <i class="fas fa-gift"></i> Click to Open
+            </div>
+            <div class="gift-body">
+                <div class="gift-question">Can I be your girlfriend?</div>
+            </div>
+        </div>
+        
+        <!-- Response buttons (appear after gift is opened) -->
+        <div class="response-container" id="responseContainer">
+            <div class="response-buttons">
+                <button class="response-btn yes-btn" id="yesBtn">YES! <i class="fas fa-heart"></i></button>
+                <button class="response-btn no-btn" id="noBtn">No</button>
+            </div>
+        </div>
+        
+        <!-- Playlist (appear after YES) -->
+        <div class="playlist-container" id="playlistContainer">
+            <h2 class="playlist-title"><i class="fab fa-spotify"></i> For You: Our Playlist</h2>
+            <p class="playlist-description">Songs that remind me of you. Click below to listen!</p>
+            
+            <a href="https://open.spotify.com/playlist/6FF9QQMTbt2tVxKWy1cj4Q?si=a58c552501ef46f0" target="_blank" class="spotify-link">
+                <i class="fab fa-spotify"></i> Open Our Spotify Playlist
+            </a>
+        </div>
+        
         <div class="footer">
-            Made with <i class="fas fa-heart" style="color: #d32f2f;"></i> for Cesca on Valentine's Day
+            Made with <i class="fas fa-heart" style="color: #d32f2f;"></i> for Cesca
         </div>
     </div>
 
     <script>
-        const giftContainer = document.getElementById('giftContainer');
-        const proposalContainer = document.getElementById('proposalContainer');
+        const giftBox = document.getElementById('giftBox');
+        const responseContainer = document.getElementById('responseContainer');
         const yesBtn = document.getElementById('yesBtn');
         const noBtn = document.getElementById('noBtn');
         const playlistContainer = document.getElementById('playlistContainer');
         const snoopyImage = document.getElementById('snoopyImage');
         let giftOpened = false;
         
-        function createHearts() {
-            const container = document.querySelector('.container');
-            for (let i = 0; i < 25; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.innerHTML = '<i class="fas fa-heart"></i>';
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.top = Math.random() * 100 + 'vh';
-                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-                heart.style.opacity = Math.random() * 0.5 + 0.1;
-                heart.style.animation = `float ${Math.random() * 10 + 10}s linear infinite`;
-                heart.style.animationDelay = Math.random() * 5 + 's';
-                container.appendChild(heart);
-            }
-        }
-        
-        function createFireworks() {
-            const container = document.querySelector('.container');
-            const colors = ['#ff5252', '#ffeb3b', '#4caf50', '#2196f3', '#9c27b0'];
-            
-            for (let i = 0; i < 50; i++) {
-                const firework = document.createElement('div');
-                firework.className = 'firework';
-                firework.style.left = Math.random() * 100 + 'vw';
-                firework.style.top = Math.random() * 100 + 'vh';
-                firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                firework.style.boxShadow = `0 0 10px ${firework.style.backgroundColor}`;
-                container.appendChild(firework);
-                
-                setTimeout(() => {
-                    firework.style.animation = `explode ${Math.random() * 0.5 + 0.5}s forwards`;
-                }, Math.random() * 1000);
-                
-                setTimeout(() => firework.remove(), 1500);
-            }
-        }
-        
-        function createConfetti() {
-            const container = document.querySelector('.container');
-            const confettiColors = ['#d32f2f', '#ffeb3b', '#4caf50', '#2196f3', '#ffffff'];
-            
-            for (let i = 0; i < 150; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'heart';
-                confetti.innerHTML = '<i class="fas fa-heart"></i>';
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.top = '-20px';
-                confetti.style.color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
-                confetti.style.fontSize = (Math.random() * 15 + 10) + 'px';
-                confetti.style.opacity = Math.random() * 0.7 + 0.3;
-                container.appendChild(confetti);
-                
-                const animationDuration = Math.random() * 3 + 2;
-                confetti.style.animation = `float ${animationDuration}s linear forwards`;
-                setTimeout(() => confetti.remove(), animationDuration * 1000);
-            }
-        }
-        
         function startSnoopyAnimation() {
             snoopyImage.style.left = '-200px';
             snoopyImage.style.animation = 'walk 10s linear forwards';
             snoopyImage.style.animationDelay = '1s';
-            
-            setTimeout(() => {
-                snoopyImage.style.animation = 'none';
-                snoopyImage.style.animation = 'pulse 1s infinite alternate';
-            }, 11000);
         }
         
-        giftContainer.addEventListener('click', function() {
+        giftBox.addEventListener('click', function() {
             if (!giftOpened) {
                 giftOpened = true;
-                giftContainer.classList.add('opened');
+                giftBox.classList.add('opened');
                 
                 setTimeout(() => {
-                    document.querySelector('.gift-instruction').style.display = 'none';
-                    proposalContainer.style.display = 'block';
-                    proposalContainer.style.animation = 'fadeIn 1s forwards';
-                    
-                    createFireworks();
-                    setTimeout(createConfetti, 500);
-                    setTimeout(createFireworks, 1000);
-                    
-                    snoopyImage.style.animation = 'pulse 0.5s infinite alternate';
+                    responseContainer.style.display = 'block';
+                    responseContainer.style.animation = 'fadeIn 1s forwards';
                 }, 800);
             }
         });
         
         yesBtn.addEventListener('click', function() {
-            createFireworks();
-            createConfetti();
-            
-            proposalContainer.style.display = 'none';
+            responseContainer.style.display = 'none';
             playlistContainer.style.display = 'block';
             playlistContainer.style.animation = 'fadeIn 1s forwards';
-            
-            setTimeout(createFireworks, 300);
-            setTimeout(createConfetti, 600);
-            setTimeout(createFireworks, 900);
         });
         
         noBtn.addEventListener('click', function() {
@@ -690,19 +426,11 @@
             yesBtn.style.transform = 'scale(1.2)';
             yesBtn.style.transition = 'transform 0.3s';
             
-            alert("Just kidding! You have to click YES! 😉");
+            alert("Just kidding! Click YES! 😉");
         });
         
         window.addEventListener('DOMContentLoaded', function() {
-            createHearts();
             startSnoopyAnimation();
-            window.scrollTo(0, 0);
-            
-            snoopyImage.addEventListener('click', function() {
-                createConfetti();
-                snoopyImage.style.transform = 'scale(1.2)';
-                setTimeout(() => snoopyImage.style.transform = 'scale(1)', 300);
-            });
         });
     </script>
 </body>
