@@ -69,20 +69,18 @@
             padding: 20px;
         }
         
-        .snoopy-container {
-            height: 250px;
-            position: relative;
-            margin: 30px 0;
-            overflow: hidden;
-            border-radius: 15px;
-            background-color: #ffecb3;
-            border: 5px dashed #d32f2f;
-            background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');
-            background-size: cover;
-            background-position: center;
-            background-blend-mode: multiply;
-        }
-        
+       .snoopy-container {
+    height: 250px;
+    position: relative;
+    margin: 30px 0;
+    overflow: hidden;
+    border-radius: 15px;
+    background-color: #d32f2f;
+    border: 5px dashed #ffeb3b;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+}
         .snoopy-img {
             position: absolute;
             bottom: 20px;
