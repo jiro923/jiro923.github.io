@@ -44,9 +44,14 @@
         }
         
         .subtitle {
-            color: #f57c00;
+            color: #d32f2f; /* Changed to plain red */
             font-size: 1.5rem;
             font-weight: bold;
+            background-color: #ffeb3b;
+            padding: 8px 20px;
+            border-radius: 30px;
+            display: inline-block;
+            border: 3px solid #d32f2f;
         }
         
         .valentine-card {
@@ -144,6 +149,9 @@
             color: #d32f2f;
             font-weight: bold;
             font-size: 1.3rem;
+            background-color: #ffeb3b;
+            padding: 2px 8px;
+            border-radius: 10px;
         }
         
         .button-container {
@@ -258,12 +266,7 @@
             background-color: white;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .qr-code img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+            background: white url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMxREI5NTQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMTMuNWMxLjEgMCAyLS45IDItMnMtLjktMi0yLTItMiAuOS0yIDIgLjkgMiAyIDJ6Ii8+PHBhdGggZD0iTTIwIDkuM1Y3YTIgMiAwIDAgMC0yLTJoLTEuOU0xNSAydDItMmgyYTIgMiAwIDAgMSAyIDJ2MS45TTkgMjJINC4xYTIuMSAyLjEgMCAxIDEgMC00LjJINS45TTIyIDEydjIuOWEyLjEgMi4xIDAgMSAxLTQuMiAwVjE5TTIgMTJINC4xYTIuMSAyLjEgMCAxIDAgMCA0LjJIMk0xOSAyMmEyIDIgMCAwIDAgMi0ydi0xLjkiLz48L3N2Zz4=') center/60% no-repeat;
         }
         
         .spotify-link {
@@ -303,10 +306,12 @@
         
         .footer {
             margin-top: 40px;
-            color: #f57c00;
+            color: #d32f2f; /* Changed to red */
             font-size: 1.1rem;
             padding: 20px;
             border-top: 3px dotted #ffeb3b;
+            background-color: #fff8e1;
+            border-radius: 15px;
         }
         
         @keyframes walk {
@@ -322,15 +327,15 @@
                 transform: scaleX(1);
             }
             51% {
-                transform: scaleX(-1); /* Flip to face left */
+                transform: scaleX(-1);
             }
             70% { 
                 left: 60%;
-                transform: scaleX(-1); /* Keep flipped */
+                transform: scaleX(-1);
             }
             100% { 
                 left: calc(100% - 180px);
-                transform: scaleX(1); /* Face right again at the end */
+                transform: scaleX(1);
             }
         }
         
@@ -354,7 +359,6 @@
             100% { transform: scale(20); opacity: 0; }
         }
         
-        /* Snoopy footprint trail */
         .footprint {
             position: absolute;
             bottom: 20px;
@@ -365,7 +369,6 @@
             opacity: 0;
         }
         
-        /* Responsive design */
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
             .proposal-text { font-size: 1.8rem; }
@@ -401,8 +404,8 @@
         
         <div class="valentine-card">
             <div class="snoopy-container">
-                <!-- Real Snoopy image -->
-                <img src="https://github.com/user-attachments/assets/eb171819-b8c0-4343-8a30-4c85565d7b57" alt="Snoopy" class="snoopy-img" id="snoopyImage">
+                <!-- Working Snoopy Image -->
+                <img src="https://www.pngmart.com/files/22/Snoopy-PNG-Isolated-HD.png" alt="Snoopy" class="snoopy-img" id="snoopyImage">
                 <div class="speech-bubble">
                     <p>Hello <span class="cesca-name">Cesca</span>, I really had a great time with you today. Thank you for this wonderful Valentine's Day!</p>
                 </div>
@@ -432,15 +435,7 @@
                     <h2 class="playlist-title"><i class="fab fa-spotify"></i> For You: Our Playlist</h2>
                     <p class="playlist-description">I've put together a collection of songs that remind me of you and our special moments together. Scan the QR code or click the link below to listen!</p>
                     
-                    <div class="qr-code">
-                        <!-- QR Code for Spotify Playlist -->
-                        <!-- In a real implementation, generate a QR code image -->
-                        <div style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: white; color: #333;">
-                            <i class="fab fa-spotify" style="font-size: 60px; color: #1db954; margin-bottom: 10px;"></i>
-                            <div style="font-weight: bold; text-align: center;">Spotify Playlist<br>Scan with phone</div>
-                            <div style="font-size: 0.8rem; margin-top: 10px; color: #666;">jiro923.github.io/valentine</div>
-                        </div>
-                    </div>
+                    <div class="qr-code"></div>
                     
                     <a href="https://open.spotify.com/playlist/6FF9QQMTbt2tVxKWy1cj4Q?si=a58c552501ef46f0" target="_blank" class="spotify-link">
                         <i class="fab fa-spotify"></i> Open Our Playlist in Spotify
@@ -455,7 +450,6 @@
     </div>
 
     <script>
-        // Elements
         const revealBtn = document.getElementById('revealBtn');
         const proposalContainer = document.getElementById('proposalContainer');
         const yesBtn = document.getElementById('yesBtn');
@@ -463,7 +457,6 @@
         const playlistContainer = document.getElementById('playlistContainer');
         const snoopyImage = document.getElementById('snoopyImage');
         
-        // Create hearts for background decoration
         function createHearts() {
             const container = document.querySelector('.container');
             for (let i = 0; i < 25; i++) {
@@ -480,24 +473,21 @@
             }
         }
         
-        // Create footprints for Snoopy's walk
         function createFootprints() {
             const container = document.querySelector('.snoopy-container');
-            const positions = [10, 25, 40, 55, 70, 85]; // percentages across the container
+            const positions = [10, 25, 40, 55, 70, 85];
             
             positions.forEach(pos => {
                 const footprint = document.createElement('div');
                 footprint.className = 'footprint';
                 footprint.style.left = `${pos}%`;
                 
-                // Alternate left/right footprints
                 if (pos % 20 === 0) {
                     footprint.style.transform = 'scaleX(-1)';
                 }
                 
                 container.appendChild(footprint);
                 
-                // Animate footprint appearance
                 setTimeout(() => {
                     footprint.style.opacity = '0.7';
                     setTimeout(() => {
@@ -507,7 +497,6 @@
             });
         }
         
-        // Create fireworks effect
         function createFireworks() {
             const container = document.querySelector('.container');
             const colors = ['#ff5252', '#ffeb3b', '#4caf50', '#2196f3', '#9c27b0'];
@@ -519,22 +508,16 @@
                 firework.style.top = Math.random() * 100 + 'vh';
                 firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                 firework.style.boxShadow = `0 0 10px ${firework.style.backgroundColor}`;
-                
                 container.appendChild(firework);
                 
-                // Animate the firework
                 setTimeout(() => {
                     firework.style.animation = `explode ${Math.random() * 0.5 + 0.5}s forwards`;
                 }, Math.random() * 1000);
                 
-                // Remove after animation
-                setTimeout(() => {
-                    firework.remove();
-                }, 1500);
+                setTimeout(() => firework.remove(), 1500);
             }
         }
         
-        // Create confetti effect
         function createConfetti() {
             const container = document.querySelector('.container');
             const confettiColors = ['#d32f2f', '#ffeb3b', '#4caf50', '#2196f3', '#ffffff'];
@@ -548,79 +531,53 @@
                 confetti.style.color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
                 confetti.style.fontSize = (Math.random() * 15 + 10) + 'px';
                 confetti.style.opacity = Math.random() * 0.7 + 0.3;
-                
                 container.appendChild(confetti);
                 
-                // Animate confetti falling
                 const animationDuration = Math.random() * 3 + 2;
                 confetti.style.animation = `float ${animationDuration}s linear forwards`;
-                confetti.style.animationDelay = '0s';
-                
-                // Remove after animation
-                setTimeout(() => {
-                    confetti.remove();
-                }, animationDuration * 1000);
+                setTimeout(() => confetti.remove(), animationDuration * 1000);
             }
         }
         
-        // Snoopy walking animation
         function startSnoopyAnimation() {
-            // Reset Snoopy position
             snoopyImage.style.left = '-200px';
             snoopyImage.style.animation = 'walk 10s linear forwards';
             snoopyImage.style.animationDelay = '1s';
             
-            // Create footprints after a delay
             setTimeout(createFootprints, 1500);
             
-            // Make Snoopy dance at the end
             setTimeout(() => {
                 snoopyImage.style.animation = 'none';
-                // Add a little bounce
                 snoopyImage.style.animation = 'pulse 1s infinite alternate';
             }, 11000);
         }
         
-        // Event Listeners
         revealBtn.addEventListener('click', function() {
-            // Hide the button
             revealBtn.style.display = 'none';
-            
-            // Show the proposal
             proposalContainer.style.display = 'block';
             proposalContainer.style.animation = 'fadeIn 1s forwards';
             
-            // Create fireworks and confetti
             createFireworks();
             setTimeout(createConfetti, 500);
             setTimeout(createFireworks, 1000);
             
-            // Make Snoopy dance
             snoopyImage.style.animation = 'pulse 0.5s infinite alternate';
         });
         
         yesBtn.addEventListener('click', function() {
-            // More celebration
             createFireworks();
             createConfetti();
             
-            // Hide proposal, show playlist
             proposalContainer.style.display = 'none';
             playlistContainer.style.display = 'block';
             playlistContainer.style.animation = 'fadeIn 1s forwards';
             
-            // Create even more celebration
             setTimeout(createFireworks, 300);
             setTimeout(createConfetti, 600);
             setTimeout(createFireworks, 900);
-            setTimeout(() => {
-                createConfetti();
-                createFireworks();
-            }, 1200);
         });
         
         noBtn.addEventListener('click', function() {
-            // Move the No button when clicked
             const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
             const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
             
@@ -628,29 +585,21 @@
             noBtn.style.left = x + 'px';
             noBtn.style.top = y + 'px';
             
-            // Make Yes button bigger
             yesBtn.style.transform = 'scale(1.2)';
             yesBtn.style.transition = 'transform 0.3s';
             
-            // Show a message
             alert("Just kidding! You have to click YES! 😉");
         });
         
-        // Initialize the page
         window.addEventListener('DOMContentLoaded', function() {
             createHearts();
             startSnoopyAnimation();
-            
-            // Auto-scroll to center the content
             window.scrollTo(0, 0);
             
-            // Click on Snoopy for a surprise
             snoopyImage.addEventListener('click', function() {
                 createConfetti();
                 snoopyImage.style.transform = 'scale(1.2)';
-                setTimeout(() => {
-                    snoopyImage.style.transform = 'scale(1)';
-                }, 300);
+                setTimeout(() => snoopyImage.style.transform = 'scale(1)', 300);
             });
         });
     </script>
