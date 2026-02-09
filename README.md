@@ -1,5 +1,3 @@
-<img width="426" height="586" alt="snoopy-removebg-preview" src="https://github.com/user-attachments/assets/e188a7b6-07fc-4899-ba9b-d077cdf5c7d7" /># jiro923.github.io
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,7 +72,7 @@
             border-radius: 15px;
             background-color: #ffecb3;
             border: 5px dashed #d32f2f;
-            background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');
+            background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');
             background-size: cover;
             background-position: center;
             background-blend-mode: multiply;
@@ -404,8 +402,7 @@
         <div class="valentine-card">
             <div class="snoopy-container">
                 <!-- Real Snoopy image -->
-                <img src="<img width="426" height="586" alt="snoopy-removebg-preview" src="https://github.com/user-attachments/assets/eb171819-b8c0-4343-8a30-4c85565d7b57" />
-" id="snoopyImage">
+                <img src="https://github.com/user-attachments/assets/eb171819-b8c0-4343-8a30-4c85565d7b57" alt="Snoopy" class="snoopy-img" id="snoopyImage">
                 <div class="speech-bubble">
                     <p>Hello <span class="cesca-name">Cesca</span>, I really had a great time with you today. Thank you for this wonderful Valentine's Day!</p>
                 </div>
@@ -465,14 +462,6 @@
         const noBtn = document.getElementById('noBtn');
         const playlistContainer = document.getElementById('playlistContainer');
         const snoopyImage = document.getElementById('snoopyImage');
-        
-        // Different Snoopy images to choose from
-        const snoopyImages = [
-            'https://www.pngmart.com/files/22/Snoopy-PNG-Isolated-HD.png',
-            'https://www.freepnglogos.com/uploads/snoopy-png/snoopy-png-transparent-snoopy-images-pluspng-15.png',
-            'https://static.wikia.nocookie.net/peanuts/images/9/90/Snoopy.png/revision/latest?cb=20200523200727',
-            'https://www.pngplay.com/wp-content/uploads/12/Snoopy-Transparent-PNG.png'
-        ];
         
         // Create hearts for background decoration
         function createHearts() {
@@ -592,12 +581,6 @@
             }, 11000);
         }
         
-        // Change Snoopy image function
-        function changeSnoopyImage() {
-            const randomIndex = Math.floor(Math.random() * snoopyImages.length);
-            snoopyImage.src = snoopyImages[randomIndex];
-        }
-        
         // Event Listeners
         revealBtn.addEventListener('click', function() {
             // Hide the button
@@ -614,19 +597,12 @@
             
             // Make Snoopy dance
             snoopyImage.style.animation = 'pulse 0.5s infinite alternate';
-            
-            // Play a sound effect (in a real implementation)
-            console.log("Fireworks and celebration!");
         });
         
         yesBtn.addEventListener('click', function() {
             // More celebration
             createFireworks();
             createConfetti();
-            
-            // Change Snoopy to a happy version
-            snoopyImage.src = 'https://www.pngmart.com/files/22/Snoopy-Jumping-PNG-Image.png';
-            snoopyImage.style.animation = 'pulse 0.3s infinite alternate';
             
             // Hide proposal, show playlist
             proposalContainer.style.display = 'none';
@@ -656,16 +632,8 @@
             yesBtn.style.transform = 'scale(1.2)';
             yesBtn.style.transition = 'transform 0.3s';
             
-            // Change Snoopy to a sad version
-            snoopyImage.src = 'https://www.pngmart.com/files/22/Snoopy-PNG-Pic.png';
-            
             // Show a message
-            alert("Just kidding! You have to click YES! 😉\nSnoopy is sad when you say no!");
-            
-            // Reset Snoopy after a moment
-            setTimeout(() => {
-                snoopyImage.src = 'https://www.pngmart.com/files/22/Snoopy-PNG-Isolated-HD.png';
-            }, 2000);
+            alert("Just kidding! You have to click YES! 😉");
         });
         
         // Initialize the page
@@ -675,9 +643,6 @@
             
             // Auto-scroll to center the content
             window.scrollTo(0, 0);
-            
-            // Optional: Change Snoopy image every 15 seconds
-            // setInterval(changeSnoopyImage, 15000);
             
             // Click on Snoopy for a surprise
             snoopyImage.addEventListener('click', function() {
