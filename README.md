@@ -44,7 +44,7 @@
         }
         
         .subtitle {
-            color: #d32f2f; /* Changed to plain red */
+            color: #d32f2f;
             font-size: 1.5rem;
             font-weight: bold;
             background-color: #ffeb3b;
@@ -69,18 +69,19 @@
             padding: 20px;
         }
         
-       .snoopy-container {
-    height: 250px;
-    position: relative;
-    margin: 30px 0;
-    overflow: hidden;
-    border-radius: 15px;
-    background-color: #d32f2f;
-    border: 5px dashed #ffeb3b;
-    background-size: cover;
-    background-position: center;
-    background-blend-mode: multiply;
-}
+        .snoopy-container {
+            height: 250px;
+            position: relative;
+            margin: 30px 0;
+            overflow: hidden;
+            border-radius: 15px;
+            background-color: #d32f2f;
+            border: 5px dashed #ffeb3b;
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: multiply;
+        }
+        
         .snoopy-img {
             position: absolute;
             bottom: 20px;
@@ -154,30 +155,141 @@
         
         .button-container {
             margin: 40px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
-        .reveal-btn {
-            background: linear-gradient(to right, #d32f2f, #f57c00);
-            color: white;
-            border: none;
-            padding: 18px 40px;
-            font-size: 1.4rem;
-            border-radius: 50px;
+        /* Gift Box Styles */
+        .gift-box {
+            width: 200px;
+            height: 200px;
+            position: relative;
             cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 6px 0 #b71c1c;
+            transition: transform 0.3s;
+            perspective: 1000px;
+        }
+        
+        .gift-box:hover {
+            transform: scale(1.05);
+        }
+        
+        .gift-box:active {
+            transform: scale(0.95);
+        }
+        
+        .gift-base {
+            width: 180px;
+            height: 120px;
+            background-color: #d32f2f;
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .gift-lid {
+            width: 200px;
+            height: 80px;
+            background-color: #d32f2f;
+            position: absolute;
+            top: 0;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform-origin: bottom;
+            transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        
+        .gift-box.opened .gift-lid {
+            transform: rotateX(-120deg);
+        }
+        
+        .ribbon {
+            position: absolute;
+            background-color: #ffeb3b;
+        }
+        
+        .ribbon-horizontal {
+            width: 200px;
+            height: 20px;
+            top: 40px;
+            left: 0;
+        }
+        
+        .ribbon-vertical {
+            width: 20px;
+            height: 120px;
+            top: 40px;
+            left: 90px;
+        }
+        
+        .ribbon-bow {
+            width: 40px;
+            height: 40px;
+            background-color: #ffeb3b;
+            border-radius: 50%;
+            position: absolute;
+            top: 30px;
+            left: 80px;
+            box-shadow: 0 0 0 10px #d32f2f;
+        }
+        
+        .ribbon-bow:before,
+        .ribbon-bow:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 30px;
+            background-color: #ffeb3b;
+            border-radius: 50%;
+        }
+        
+        .ribbon-bow:before {
+            top: -15px;
+            left: -5px;
+            transform: rotate(-30deg);
+        }
+        
+        .ribbon-bow:after {
+            top: -15px;
+            right: -5px;
+            transform: rotate(30deg);
+        }
+        
+        .gift-message {
+            position: absolute;
+            width: 180px;
+            height: 120px;
+            background-color: white;
+            bottom: 0;
+            left: 10px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            color: #d32f2f;
+            font-size: 1.4rem;
             font-weight: bold;
-            letter-spacing: 1px;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
-        .reveal-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 0 #b71c1c;
-        }
-        
-        .reveal-btn:active {
+        .gift-box.opened .gift-message {
+            opacity: 1;
             transform: translateY(0);
-            box-shadow: 0 3px 0 #b71c1c;
+            animation: pulse 1.5s infinite alternate;
+        }
+        
+        .gift-instruction {
+            margin-top: 20px;
+            color: #d32f2f;
+            font-size: 1.2rem;
+            font-weight: bold;
         }
         
         .proposal-container {
@@ -264,7 +376,7 @@
             background-color: white;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            background: white url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMxREI5NTQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMTMuNWMxLjEgMCAyLS45IDItMnMtLjktMi0yLTItMiAuOS0yIDIgLjkgMiAyIDJ6Ii8+PHBhdGggZD0iTTIwIDkuM1Y3YTIgMiAwIDAgMC0yLTJoLTEuOU0xNSAydDItMmgyYTIgMiAwIDAgMSAyIDJ2MS45TTkgMjJINC4xYTIuMSAyLjEgMCAxIDEgMC00LjJINS45TTIyIDEydjIuOWEyLjEgMi4xIDAgMSAxLTQuMiAwVjE5TTIgMTJINC4xYTIuMSAyLjEgMCAxIDAgMCA0LjJIMk0xOSAyMmEyIDIgMCAwIDAgMi0ydi0xLjkiLz48L3N2Zz4=') center/60% no-repeat;
+            background: white url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMxREI5NTQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMTMuNWMxLjEgMCAyLS45IDItMnMtLjktMi0yLTItMiAuOS0yIDIgLjkgMiAyIDJ6Ii8+PHBhdGggZD0iTTIwIDkuM3Y3YTIgMiAwIDAgMS0yIDJoLTEuOU0xNSAyMmgyYTIgMiAwIDAgMCAyLTJ2LTEuOU0yMiAxMnYtMi45YTIuMSAyLjEgMCAxIDAtNC4yIDB2M00xMy41IDEyYzAtMS4xLS45LTItMi0ycy0yIC45LTIgMiAuOSAyIDIgMiAyLS45IDItMnptLTkgMGgzbTAgMGgtM00xOSAyMmEyIDIgMCAwIDAgMi0ydi0xLjkiLz48L3N2Zz4=') center/60% no-repeat;
         }
         
         .spotify-link {
@@ -304,7 +416,7 @@
         
         .footer {
             margin-top: 40px;
-            color: #d32f2f; /* Changed to red */
+            color: #d32f2f;
             font-size: 1.1rem;
             padding: 20px;
             border-top: 3px dotted #ffeb3b;
@@ -379,6 +491,12 @@
                 left: 150px;
                 top: 30px;
             }
+            .gift-box {
+                transform: scale(0.8);
+            }
+            .gift-box:hover {
+                transform: scale(0.85);
+            }
         }
         
         @media (max-width: 480px) {
@@ -390,6 +508,12 @@
                 padding: 10px 15px;
             }
             .speech-bubble p { font-size: 1rem; }
+            .gift-box {
+                transform: scale(0.7);
+            }
+            .gift-box:hover {
+                transform: scale(0.75);
+            }
         }
     </style>
 </head>
@@ -402,7 +526,6 @@
         
         <div class="valentine-card">
             <div class="snoopy-container">
-                <!-- Working Snoopy Image -->
                 <img src="https://www.pngmart.com/files/22/Snoopy-PNG-Isolated-HD.png" alt="Snoopy" class="snoopy-img" id="snoopyImage">
                 <div class="speech-bubble">
                     <p>Hello <span class="cesca-name">Cesca</span>, I really had a great time with you today. Thank you for this wonderful Valentine's Day!</p>
@@ -416,13 +539,23 @@
                 </div>
                 
                 <div class="button-container">
-                    <button class="reveal-btn" id="revealBtn">
-                        <i class="fas fa-fireworks"></i> Click for a Surprise! <i class="fas fa-fireworks"></i>
-                    </button>
+                    <div class="gift-box" id="giftBox">
+                        <div class="gift-base"></div>
+                        <div class="ribbon ribbon-horizontal"></div>
+                        <div class="ribbon ribbon-vertical"></div>
+                        <div class="ribbon-bow"></div>
+                        <div class="gift-lid"></div>
+                        <div class="gift-message" id="giftMessage">
+                            Can I be your girlfriend?
+                        </div>
+                    </div>
+                </div>
+                <div class="gift-instruction">
+                    <i class="fas fa-hand-point-up"></i> Click the gift to open it!
                 </div>
                 
                 <div class="proposal-container" id="proposalContainer">
-                    <div class="proposal-text">Will you be my girlfriend?</div>
+                    <div class="proposal-text">Can I be your girlfriend?</div>
                     <div class="response-buttons">
                         <button class="response-btn yes-btn" id="yesBtn">YES! <i class="fas fa-heart"></i></button>
                         <button class="response-btn no-btn" id="noBtn">No</button>
@@ -443,17 +576,19 @@
         </div>
         
         <div class="footer">
-             <i class="fas fa-heart" style="color: #d32f2f;"></i> 2/14/26
+            Made with <i class="fas fa-heart" style="color: #d32f2f;"></i> for Cesca on Valentine's Day
         </div>
     </div>
 
     <script>
-        const revealBtn = document.getElementById('revealBtn');
+        const giftBox = document.getElementById('giftBox');
+        const giftMessage = document.getElementById('giftMessage');
         const proposalContainer = document.getElementById('proposalContainer');
         const yesBtn = document.getElementById('yesBtn');
         const noBtn = document.getElementById('noBtn');
         const playlistContainer = document.getElementById('playlistContainer');
         const snoopyImage = document.getElementById('snoopyImage');
+        let giftOpened = false;
         
         function createHearts() {
             const container = document.querySelector('.container');
@@ -469,30 +604,6 @@
                 heart.style.animationDelay = Math.random() * 5 + 's';
                 container.appendChild(heart);
             }
-        }
-        
-        function createFootprints() {
-            const container = document.querySelector('.snoopy-container');
-            const positions = [10, 25, 40, 55, 70, 85];
-            
-            positions.forEach(pos => {
-                const footprint = document.createElement('div');
-                footprint.className = 'footprint';
-                footprint.style.left = `${pos}%`;
-                
-                if (pos % 20 === 0) {
-                    footprint.style.transform = 'scaleX(-1)';
-                }
-                
-                container.appendChild(footprint);
-                
-                setTimeout(() => {
-                    footprint.style.opacity = '0.7';
-                    setTimeout(() => {
-                        footprint.style.opacity = '0';
-                    }, 3000);
-                }, (pos / 10) * 1000);
-            });
         }
         
         function createFireworks() {
@@ -542,24 +653,33 @@
             snoopyImage.style.animation = 'walk 10s linear forwards';
             snoopyImage.style.animationDelay = '1s';
             
-            setTimeout(createFootprints, 1500);
-            
             setTimeout(() => {
                 snoopyImage.style.animation = 'none';
                 snoopyImage.style.animation = 'pulse 1s infinite alternate';
             }, 11000);
         }
         
-        revealBtn.addEventListener('click', function() {
-            revealBtn.style.display = 'none';
-            proposalContainer.style.display = 'block';
-            proposalContainer.style.animation = 'fadeIn 1s forwards';
-            
-            createFireworks();
-            setTimeout(createConfetti, 500);
-            setTimeout(createFireworks, 1000);
-            
-            snoopyImage.style.animation = 'pulse 0.5s infinite alternate';
+        giftBox.addEventListener('click', function() {
+            if (!giftOpened) {
+                giftOpened = true;
+                giftBox.classList.add('opened');
+                
+                setTimeout(() => {
+                    giftMessage.style.display = 'flex';
+                    
+                    setTimeout(() => {
+                        document.querySelector('.gift-instruction').style.display = 'none';
+                        proposalContainer.style.display = 'block';
+                        proposalContainer.style.animation = 'fadeIn 1s forwards';
+                        
+                        createFireworks();
+                        setTimeout(createConfetti, 500);
+                        setTimeout(createFireworks, 1000);
+                        
+                        snoopyImage.style.animation = 'pulse 0.5s infinite alternate';
+                    }, 1000);
+                }, 500);
+            }
         });
         
         yesBtn.addEventListener('click', function() {
@@ -598,6 +718,18 @@
                 createConfetti();
                 snoopyImage.style.transform = 'scale(1.2)';
                 setTimeout(() => snoopyImage.style.transform = 'scale(1)', 300);
+            });
+            
+            giftBox.addEventListener('mouseenter', function() {
+                if (!giftOpened) {
+                    giftBox.style.transform = 'scale(1.05)';
+                }
+            });
+            
+            giftBox.addEventListener('mouseleave', function() {
+                if (!giftOpened) {
+                    giftBox.style.transform = 'scale(1)';
+                }
             });
         });
     </script>
