@@ -1,1 +1,600 @@
-# jiro923.github.io
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Cesca - A Snoopy Valentine</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffebee 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            color: #333;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 900px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header {
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            color: #d32f2f;
+            font-size: 2.8rem;
+            text-shadow: 3px 3px 0 #ffeb3b;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #f57c00;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .valentine-card {
+            background-color: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(211, 47, 47, 0.2);
+            border: 8px solid #ffeb3b;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .snoopy-container {
+            height: 220px;
+            position: relative;
+            margin: 30px 0;
+            overflow: hidden;
+            border-radius: 15px;
+            background-color: #ffecb3;
+            border: 5px dashed #d32f2f;
+        }
+        
+        .snoopy {
+            position: absolute;
+            bottom: 20px;
+            left: -150px;
+            width: 150px;
+            height: 150px;
+            background-color: white;
+            border-radius: 50% 50% 45% 45%;
+            animation: walk 8s linear forwards;
+            animation-delay: 1s;
+        }
+        
+        .snoopy:before, .snoopy:after {
+            content: '';
+            position: absolute;
+            background-color: white;
+        }
+        
+        .snoopy:before {
+            width: 60px;
+            height: 50px;
+            border-radius: 50%;
+            top: -25px;
+            left: 45px;
+            box-shadow: 0 5px 0 #333;
+        }
+        
+        .snoopy:after {
+            width: 90px;
+            height: 40px;
+            border-radius: 50%;
+            top: -15px;
+            left: 30px;
+        }
+        
+        .snoopy-ear {
+            position: absolute;
+            width: 40px;
+            height: 60px;
+            background-color: black;
+            border-radius: 50%;
+            top: -10px;
+            left: 55px;
+            transform: rotate(-20deg);
+        }
+        
+        .snoopy-body {
+            position: absolute;
+            width: 120px;
+            height: 100px;
+            background-color: white;
+            border-radius: 45% 45% 40% 40%;
+            top: 70px;
+            left: 15px;
+            box-shadow: inset 0 -5px 0 #f5f5f5;
+        }
+        
+        .speech-bubble {
+            position: absolute;
+            top: 50px;
+            left: 180px;
+            background-color: white;
+            padding: 15px 20px;
+            border-radius: 20px;
+            box-shadow: 3px 3px 0 #ffcdd2;
+            border: 3px solid #d32f2f;
+            max-width: 300px;
+            text-align: left;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+            animation-delay: 6s;
+        }
+        
+        .speech-bubble:after {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 30px;
+            border: 10px solid transparent;
+            border-right-color: #d32f2f;
+        }
+        
+        .speech-bubble p {
+            color: #5d4037;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+        
+        .message-box {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #ffebee;
+            border-radius: 15px;
+            border-left: 8px solid #d32f2f;
+        }
+        
+        .message-box h2 {
+            color: #d32f2f;
+            margin-bottom: 15px;
+        }
+        
+        .message-box p {
+            font-size: 1.2rem;
+            color: #5d4037;
+            line-height: 1.6;
+        }
+        
+        .cesca-name {
+            color: #d32f2f;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .button-container {
+            margin: 40px 0;
+        }
+        
+        .reveal-btn {
+            background: linear-gradient(to right, #d32f2f, #f57c00);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.4rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 6px 0 #b71c1c;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .reveal-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 0 #b71c1c;
+        }
+        
+        .reveal-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 3px 0 #b71c1c;
+        }
+        
+        .proposal-container {
+            display: none;
+            margin-top: 40px;
+            padding: 30px;
+            background-color: #fffde7;
+            border-radius: 20px;
+            border: 5px solid #ffeb3b;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .proposal-text {
+            font-size: 2.5rem;
+            color: #d32f2f;
+            font-weight: bold;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 0 #ffecb3;
+            animation: pulse 1.5s infinite alternate;
+        }
+        
+        .response-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .response-btn {
+            padding: 18px 50px;
+            font-size: 1.8rem;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            box-shadow: 0 6px 0 rgba(0,0,0,0.2);
+        }
+        
+        .yes-btn {
+            background-color: #4caf50;
+            color: white;
+        }
+        
+        .no-btn {
+            background-color: #f44336;
+            color: white;
+        }
+        
+        .response-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .playlist-container {
+            display: none;
+            margin-top: 40px;
+            padding: 30px;
+            background-color: #e8f5e9;
+            border-radius: 20px;
+            border: 5px solid #4caf50;
+        }
+        
+        .playlist-title {
+            color: #2e7d32;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .playlist-description {
+            color: #5d4037;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .spotify-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: #1db954;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .spotify-link:hover {
+            background-color: #1ed760;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(29, 185, 84, 0.4);
+        }
+        
+        .heart {
+            position: absolute;
+            color: #ff5252;
+            font-size: 20px;
+            opacity: 0;
+            z-index: 0;
+        }
+        
+        .firework {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            color: #f57c00;
+            font-size: 1.1rem;
+            padding: 20px;
+            border-top: 3px dotted #ffeb3b;
+        }
+        
+        @keyframes walk {
+            0% { left: -150px; }
+            30% { left: 30%; }
+            70% { left: 60%; }
+            100% { left: calc(100% - 150px); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
+        }
+        
+        @keyframes explode {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(20); opacity: 0; }
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .proposal-text { font-size: 1.8rem; }
+            .response-buttons { flex-direction: column; gap: 20px; }
+            .response-btn { padding: 15px 30px; }
+            .snoopy-container { height: 180px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-heart"></i> A Snoopy Valentine <i class="fas fa-heart"></i></h1>
+            <div class="subtitle">For someone very special...</div>
+        </div>
+        
+        <div class="valentine-card">
+            <div class="snoopy-container">
+                <div class="snoopy">
+                    <div class="snoopy-ear"></div>
+                    <div class="snoopy-body"></div>
+                </div>
+                <div class="speech-bubble">
+                    <p>Hello <span class="cesca-name">Cesca</span>, I really had a great time with you today. Thank you for this wonderful Valentine's Day!</p>
+                </div>
+            </div>
+            
+            <div class="card-content">
+                <div class="message-box">
+                    <h2><i class="fas fa-gift"></i> A Special Message</h2>
+                    <p>This Valentine's Day, I wanted to do something special to show you how much you mean to me. You make every day brighter and every moment more meaningful.</p>
+                </div>
+                
+                <div class="button-container">
+                    <button class="reveal-btn" id="revealBtn">
+                        <i class="fas fa-fireworks"></i> Click for a Surprise! <i class="fas fa-fireworks"></i>
+                    </button>
+                </div>
+                
+                <div class="proposal-container" id="proposalContainer">
+                    <div class="proposal-text">Will you be my girlfriend?</div>
+                    <div class="response-buttons">
+                        <button class="response-btn yes-btn" id="yesBtn">YES! <i class="fas fa-heart"></i></button>
+                        <button class="response-btn no-btn" id="noBtn">No</button>
+                    </div>
+                </div>
+                
+                <div class="playlist-container" id="playlistContainer">
+                    <h2 class="playlist-title"><i class="fab fa-spotify"></i> For You: Our Playlist</h2>
+                    <p class="playlist-description">I've put together a collection of songs that remind me of you and our special moments together. Scan the QR code or click the link below to listen!</p>
+                    
+                    <div class="qr-code">
+                        <!-- This would be a QR code image in a real implementation -->
+                        <div style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: white; color: #333;">
+                            <i class="fab fa-spotify" style="font-size: 60px; color: #1db954; margin-bottom: 10px;"></i>
+                            <div style="font-weight: bold; text-align: center;">Spotify Playlist<br>Scan with phone</div>
+                        </div>
+                    </div>
+                    
+                    <a href="https://open.spotify.com/playlist/6FF9QQMTbt2tVxKWy1cj4Q?si=a58c552501ef46f0" target="_blank" class="spotify-link">
+                        <i class="fab fa-spotify"></i> Open in Spotify
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            Made with <i class="fas fa-heart" style="color: #d32f2f;"></i> for Cesca on Valentine's Day
+        </div>
+    </div>
+
+    <script>
+        // Elements
+        const revealBtn = document.getElementById('revealBtn');
+        const proposalContainer = document.getElementById('proposalContainer');
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const playlistContainer = document.getElementById('playlistContainer');
+        
+        // Create hearts for background decoration
+        function createHearts() {
+            const container = document.querySelector('.container');
+            for (let i = 0; i < 25; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '<i class="fas fa-heart"></i>';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = Math.random() * 100 + 'vh';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heart.style.opacity = Math.random() * 0.5 + 0.1;
+                heart.style.animation = `float ${Math.random() * 10 + 10}s linear infinite`;
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(heart);
+            }
+        }
+        
+        // Create fireworks effect
+        function createFireworks() {
+            const container = document.querySelector('.container');
+            const colors = ['#ff5252', '#ffeb3b', '#4caf50', '#2196f3', '#9c27b0'];
+            
+            for (let i = 0; i < 50; i++) {
+                const firework = document.createElement('div');
+                firework.className = 'firework';
+                firework.style.left = Math.random() * 100 + 'vw';
+                firework.style.top = Math.random() * 100 + 'vh';
+                firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                firework.style.boxShadow = `0 0 10px ${firework.style.backgroundColor}`;
+                
+                container.appendChild(firework);
+                
+                // Animate the firework
+                setTimeout(() => {
+                    firework.style.animation = `explode ${Math.random() * 0.5 + 0.5}s forwards`;
+                }, Math.random() * 1000);
+                
+                // Remove after animation
+                setTimeout(() => {
+                    firework.remove();
+                }, 1500);
+            }
+        }
+        
+        // Create confetti effect
+        function createConfetti() {
+            const container = document.querySelector('.container');
+            const confettiColors = ['#d32f2f', '#ffeb3b', '#4caf50', '#2196f3', '#ffffff'];
+            
+            for (let i = 0; i < 150; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'heart';
+                confetti.innerHTML = '<i class="fas fa-heart"></i>';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-20px';
+                confetti.style.color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+                confetti.style.fontSize = (Math.random() * 15 + 10) + 'px';
+                confetti.style.opacity = Math.random() * 0.7 + 0.3;
+                
+                container.appendChild(confetti);
+                
+                // Animate confetti falling
+                const animationDuration = Math.random() * 3 + 2;
+                confetti.style.animation = `float ${animationDuration}s linear forwards`;
+                confetti.style.animationDelay = '0s';
+                
+                // Remove after animation
+                setTimeout(() => {
+                    confetti.remove();
+                }, animationDuration * 1000);
+            }
+        }
+        
+        // Snoopy walking animation
+        function startSnoopyAnimation() {
+            const snoopy = document.querySelector('.snoopy');
+            snoopy.style.animation = 'walk 8s linear forwards';
+        }
+        
+        // Event Listeners
+        revealBtn.addEventListener('click', function() {
+            // Hide the button
+            revealBtn.style.display = 'none';
+            
+            // Show the proposal
+            proposalContainer.style.display = 'block';
+            proposalContainer.style.animation = 'fadeIn 1s forwards';
+            
+            // Create fireworks and confetti
+            createFireworks();
+            setTimeout(createConfetti, 500);
+            setTimeout(createFireworks, 1000);
+            
+            // Play a sound effect (in a real implementation)
+            console.log("Fireworks and celebration!");
+        });
+        
+        yesBtn.addEventListener('click', function() {
+            // More celebration
+            createFireworks();
+            createConfetti();
+            
+            // Hide proposal, show playlist
+            proposalContainer.style.display = 'none';
+            playlistContainer.style.display = 'block';
+            playlistContainer.style.animation = 'fadeIn 1s forwards';
+            
+            // Create even more celebration
+            setTimeout(createFireworks, 300);
+            setTimeout(createConfetti, 600);
+            setTimeout(createFireworks, 900);
+        });
+        
+        noBtn.addEventListener('click', function() {
+            // Move the No button when clicked
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+            
+            // Make Yes button bigger
+            yesBtn.style.transform = 'scale(1.2)';
+            yesBtn.style.transition = 'transform 0.3s';
+            
+            // Show a message
+            alert("Just kidding! You have to click YES! 😉");
+        });
+        
+        // Initialize the page
+        window.addEventListener('DOMContentLoaded', function() {
+            createHearts();
+            startSnoopyAnimation();
+            
+            // Auto-scroll to center the content
+            window.scrollTo(0, 0);
+        });
+    </script>
+</body>
+</html>
