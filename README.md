@@ -1,4 +1,4 @@
-# jiro923.github.io
+<img width="426" height="586" alt="snoopy-removebg-preview" src="https://github.com/user-attachments/assets/e188a7b6-07fc-4899-ba9b-d077cdf5c7d7" /># jiro923.github.io
 
 <!DOCTYPE html>
 <html lang="en">
@@ -404,7 +404,8 @@
         <div class="valentine-card">
             <div class="snoopy-container">
                 <!-- Real Snoopy image -->
-                <img src="https://www.pngmart.com/files/22/Snoopy-PNG-Isolated-HD.png" alt="Snoopy" class="snoopy-img" id="snoopyImage">
+                <img src="<img width="426" height="586" alt="snoopy-removebg-preview" src="https://github.com/user-attachments/assets/eb171819-b8c0-4343-8a30-4c85565d7b57" />
+" id="snoopyImage">
                 <div class="speech-bubble">
                     <p>Hello <span class="cesca-name">Cesca</span>, I really had a great time with you today. Thank you for this wonderful Valentine's Day!</p>
                 </div>
