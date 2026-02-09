@@ -1,737 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Cesca - A Snoopy Valentine</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #fff8e1 0%, #ffebee 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow-x: hidden;
-            color: #333;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 900px;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .header {
-            margin-bottom: 40px;
-        }
-        
-        h1 {
-            color: #d32f2f;
-            font-size: 2.8rem;
-            text-shadow: 3px 3px 0 #ffeb3b;
-            margin-bottom: 10px;
-        }
-        
-        .subtitle {
-            color: #d32f2f;
-            font-size: 1.5rem;
-            font-weight: bold;
-            background-color: #ffeb3b;
-            padding: 8px 20px;
-            border-radius: 30px;
-            display: inline-block;
-            border: 3px solid #d32f2f;
-        }
-        
-        .valentine-card {
-            background-color: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(211, 47, 47, 0.2);
-            border: 8px solid #ffeb3b;
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 40px;
-        }
-        
-        .card-content {
-            padding: 20px;
-        }
-        
-        .snoopy-container {
-            height: 250px;
-            position: relative;
-            margin: 30px 0;
-            overflow: hidden;
-            border-radius: 15px;
-            background-color: #d32f2f;
-            border: 5px dashed #ffeb3b;
-            background-size: cover;
-            background-position: center;
-            background-blend-mode: multiply;
-        }
-        
-        .snoopy-img {
-            position: absolute;
-            bottom: 20px;
-            left: -200px;
-            width: 180px;
-            height: auto;
-            animation: walk 10s linear forwards;
-            animation-delay: 1s;
-            filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.3));
-        }
-        
-        .speech-bubble {
-            position: absolute;
-            top: 50px;
-            left: 200px;
-            background-color: white;
-            padding: 15px 20px;
-            border-radius: 20px;
-            box-shadow: 3px 3px 0 #ffcdd2;
-            border: 3px solid #d32f2f;
-            max-width: 300px;
-            text-align: left;
-            opacity: 0;
-            animation: fadeIn 0.5s forwards;
-            animation-delay: 8s;
-            z-index: 10;
-        }
-        
-        .speech-bubble:after {
-            content: '';
-            position: absolute;
-            left: -20px;
-            top: 30px;
-            border: 10px solid transparent;
-            border-right-color: #d32f2f;
-        }
-        
-        .speech-bubble p {
-            color: #5d4037;
-            font-size: 1.1rem;
-            line-height: 1.4;
-        }
-        
-        .message-box {
-            margin: 30px 0;
-            padding: 20px;
-            background-color: #ffebee;
-            border-radius: 15px;
-            border-left: 8px solid #d32f2f;
-        }
-        
-        .message-box h2 {
-            color: #d32f2f;
-            margin-bottom: 15px;
-        }
-        
-        .message-box p {
-            font-size: 1.2rem;
-            color: #5d4037;
-            line-height: 1.6;
-        }
-        
-        .cesca-name {
-            color: #d32f2f;
-            font-weight: bold;
-            font-size: 1.3rem;
-            background-color: #ffeb3b;
-            padding: 2px 8px;
-            border-radius: 10px;
-        }
-        
-        .button-container {
-            margin: 40px 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        /* Gift Box Styles */
-        .gift-box {
-            width: 200px;
-            height: 200px;
-            position: relative;
-            cursor: pointer;
-            transition: transform 0.3s;
-            perspective: 1000px;
-        }
-        
-        .gift-box:hover {
-            transform: scale(1.05);
-        }
-        
-        .gift-box:active {
-            transform: scale(0.95);
-        }
-        
-        .gift-base {
-            width: 180px;
-            height: 120px;
-            background-color: #d32f2f;
-            position: absolute;
-            bottom: 0;
-            left: 10px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        .gift-lid {
-            width: 200px;
-            height: 80px;
-            background-color: #d32f2f;
-            position: absolute;
-            top: 0;
-            border-radius: 10px 10px 0 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transform-origin: bottom;
-            transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-        }
-        
-        .gift-box.opened .gift-lid {
-            transform: rotateX(-120deg);
-        }
-        
-        .ribbon {
-            position: absolute;
-            background-color: #ffeb3b;
-        }
-        
-        .ribbon-horizontal {
-            width: 200px;
-            height: 20px;
-            top: 40px;
-            left: 0;
-        }
-        
-        .ribbon-vertical {
-            width: 20px;
-            height: 120px;
-            top: 40px;
-            left: 90px;
-        }
-        
-        .ribbon-bow {
-            width: 40px;
-            height: 40px;
-            background-color: #ffeb3b;
-            border-radius: 50%;
-            position: absolute;
-            top: 30px;
-            left: 80px;
-            box-shadow: 0 0 0 10px #d32f2f;
-        }
-        
-        .ribbon-bow:before,
-        .ribbon-bow:after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 30px;
-            background-color: #ffeb3b;
-            border-radius: 50%;
-        }
-        
-        .ribbon-bow:before {
-            top: -15px;
-            left: -5px;
-            transform: rotate(-30deg);
-        }
-        
-        .ribbon-bow:after {
-            top: -15px;
-            right: -5px;
-            transform: rotate(30deg);
-        }
-        
-        .gift-message {
-            position: absolute;
-            width: 180px;
-            height: 120px;
-            background-color: white;
-            bottom: 0;
-            left: 10px;
-            border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-            color: #d32f2f;
-            font-size: 1.4rem;
-            font-weight: bold;
-            text-align: center;
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .gift-box.opened .gift-message {
-            opacity: 1;
-            transform: translateY(0);
-            animation: pulse 1.5s infinite alternate;
-        }
-        
-        .gift-instruction {
-            margin-top: 20px;
-            color: #d32f2f;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-        
-        .proposal-container {
-            display: none;
-            margin-top: 40px;
-            padding: 30px;
-            background-color: #fffde7;
-            border-radius: 20px;
-            border: 5px solid #ffeb3b;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .proposal-text {
-            font-size: 2.5rem;
-            color: #d32f2f;
-            font-weight: bold;
-            margin-bottom: 40px;
-            text-shadow: 2px 2px 0 #ffecb3;
-            animation: pulse 1.5s infinite alternate;
-        }
-        
-        .response-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 30px;
-        }
-        
-        .response-btn {
-            padding: 18px 50px;
-            font-size: 1.8rem;
-            border: none;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: bold;
-            box-shadow: 0 6px 0 rgba(0,0,0,0.2);
-        }
-        
-        .yes-btn {
-            background-color: #4caf50;
-            color: white;
-        }
-        
-        .no-btn {
-            background-color: #f44336;
-            color: white;
-        }
-        
-        .response-btn:hover {
-            transform: scale(1.1);
-        }
-        
-        .playlist-container {
-            display: none;
-            margin-top: 40px;
-            padding: 30px;
-            background-color: #e8f5e9;
-            border-radius: 20px;
-            border: 5px solid #4caf50;
-        }
-        
-        .playlist-title {
-            color: #2e7d32;
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-        
-        .playlist-description {
-            color: #5d4037;
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .qr-code {
-            width: 200px;
-            height: 200px;
-            margin: 20px auto;
-            padding: 15px;
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            background: white url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMxREI5NTQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMTMuNWMxLjEgMCAyLS45IDItMnMtLjktMi0yLTItMiAuOS0yIDIgLjkgMiAyIDJ6Ii8+PHBhdGggZD0iTTIwIDkuM3Y3YTIgMiAwIDAgMS0yIDJoLTEuOU0xNSAyMmgyYTIgMiAwIDAgMCAyLTJ2LTEuOU0yMiAxMnYtMi45YTIuMSAyLjEgMCAxIDAtNC4yIDB2M00xMy41IDEyYzAtMS4xLS45LTItMi0ycy0yIC45LTIgMiAuOSAyIDIgMiAyLS45IDItMnptLTkgMGgzbTAgMGgtM00xOSAyMmEyIDIgMCAwIDAgMi0ydi0xLjkiLz48L3N2Zz4=') center/60% no-repeat;
-        }
-        
-        .spotify-link {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            background-color: #1db954;
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-        
-        .spotify-link:hover {
-            background-color: #1ed760;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(29, 185, 84, 0.4);
-        }
-        
-        .heart {
-            position: absolute;
-            color: #ff5252;
-            font-size: 20px;
-            opacity: 0;
-            z-index: 0;
-        }
-        
-        .firework {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            z-index: 0;
-            pointer-events: none;
-        }
-        
-        .footer {
-            margin-top: 40px;
-            color: #d32f2f;
-            font-size: 1.1rem;
-            padding: 20px;
-            border-top: 3px dotted #ffeb3b;
-            background-color: #fff8e1;
-            border-radius: 15px;
-        }
-        
-        @keyframes walk {
-            0% { 
-                left: -200px;
-                transform: scaleX(1);
-            }
-            30% { 
-                left: 30%;
-                transform: scaleX(1);
-            }
-            50% {
-                transform: scaleX(1);
-            }
-            51% {
-                transform: scaleX(-1);
-            }
-            70% { 
-                left: 60%;
-                transform: scaleX(-1);
-            }
-            100% { 
-                left: calc(100% - 180px);
-                transform: scaleX(1);
-            }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes pulse {
-            from { transform: scale(1); }
-            to { transform: scale(1.05); }
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
-        }
-        
-        @keyframes explode {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(20); opacity: 0; }
-        }
-        
-        .footprint {
-            position: absolute;
-            bottom: 20px;
-            width: 30px;
-            height: 15px;
-            background-color: rgba(255, 255, 255, 0.7);
-            border-radius: 50%;
-            opacity: 0;
-        }
-        
-        @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            .proposal-text { font-size: 1.8rem; }
-            .response-buttons { flex-direction: column; gap: 20px; }
-            .response-btn { padding: 15px 30px; }
-            .snoopy-container { height: 200px; }
-            .snoopy-img { width: 150px; }
-            .speech-bubble {
-                max-width: 250px;
-                left: 150px;
-                top: 30px;
-            }
-            .gift-box {
-                transform: scale(0.8);
-            }
-            .gift-box:hover {
-                transform: scale(0.85);
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .snoopy-img { width: 120px; }
-            .speech-bubble {
-                max-width: 200px;
-                left: 100px;
-                top: 20px;
-                padding: 10px 15px;
-            }
-            .speech-bubble p { font-size: 1rem; }
-            .gift-box {
-                transform: scale(0.7);
-            }
-            .gift-box:hover {
-                transform: scale(0.75);
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For You 🤍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #fff;
+      color: #333;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    /* Color palette */
+    .red { color: #e63946; }
+    .yellow { color: #f4c430; }
+
+    /* First section */
+    .hero {
+      background: linear-gradient(180deg, #ffffff, #fff5f5);
+    }
+
+    .hero img {
+      width: 220px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 500px;
+    }
+
+    .scroll {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    /* Message section */
+    .message {
+      background: #fff;
+    }
+
+    .message h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .message p {
+      max-width: 600px;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    /* Question section */
+    .question {
+      background: linear-gradient(180deg, #fff, #fff9e6);
+    }
+
+    .question h2 {
+      font-size: 2.3rem;
+      margin-bottom: 2rem;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    button {
+      padding: 0.9rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .yes {
+      background: #e63946;
+      color: white;
+    }
+
+    .no {
+      background: #f4c430;
+      color: #333;
+    }
+
+    /* Little hearts animation */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translateY(-110vh); opacity: 0; }
+    }
+  
+        /* Gift cover (oval envelope style) */
+    .gift-cover {
+      width: 380px;
+      height: 260px;
+      background: #e63946;
+      border-radius: 160px;
+      position: relative;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .gift-cover:hover {
+      transform: scale(1.03);
+    }
+
+    .ribbon-vertical {
+      position: absolute;
+      width: 28px;
+      height: 100%;
+      background: #f4c430;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .ribbon-bow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2rem;
+    }
+
+    .cover-text {
+      position: absolute;
+      bottom: 18px;
+      font-size: 0.9rem;
+      color: #fff;
+      opacity: 0.85;
+    }
+
+    .gift-cover.open {
+      opacity: 0;
+      transform: scale(0.8);
+      pointer-events: none;
+    }
+
+    .hidden-question { display: none; }
+
+    .question-inside {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      z-index: 2;
+      color: white;
+    }
+
+    .question-inside h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .gift-cover.open .question-inside {
+      opacity: 1;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(25px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1><i class="fas fa-heart"></i> A Snoopy Valentine <i class="fas fa-heart"></i></h1>
-            <div class="subtitle">For someone very special...</div>
+
+  <!-- Section 1: Thank you page -->
+  <section class="hero">
+    <!-- Replace the src with a Snoopy image you like -->
+    <img src="https://i.imgur.com/9QOZQYB.png" alt="Snoopy" />
+
+    <h1 class="red">Hi, baby 🤍</h1>
+    <p>
+      Thank you for today. I really appreciate it more than you know.
+      This is just a small thing, but I wanted to make something special for you.
+    </p>
+
+    <div class="scroll">scroll down ⬇</div>
+  </section>
+
+  <!-- Section 2: Hidden message -->
+  <section class="message">
+    <h2 class="yellow">A little confession…</h2>
+    <p>
+      Spending time with you feels easy, warm, and safe.
+      You make ordinary days feel softer and brighter.
+      Somewhere along the way, I realized I don’t just like you —
+      I want to choose you, intentionally, every day.
+    </p>
+  </section>
+
+  <!-- Section 3: Mystery cover -->
+  <section class="question">
+    <div class="gift-cover" onclick="openBox()" id="giftCover">
+      <div class="ribbon-vertical"></div>
+      <div class="ribbon-bow">🎀</div>
+      <div class="cover-text">tap to open</div>
+
+      <div class="question-inside">
+        <h2>Will you be my girlfriend? 🥺❤️</h2>
+        <div class="buttons">
+          <button class="yes" onclick="yesClicked()">Yes</button>
+          <button class="no" onclick="noClicked()">No</button>
         </div>
-        
-        <div class="valentine-card">
-            <div class="snoopy-container">
-                <img src="https://www.pngmart.com/files/22/Snoopy-PNG-Isolated-HD.png" alt="Snoopy" class="snoopy-img" id="snoopyImage">
-                <div class="speech-bubble">
-                    <p>Hello <span class="cesca-name">Cesca</span>, I really had a great time with you today. Thank you for this wonderful Valentine's Day!</p>
-                </div>
-            </div>
-            
-            <div class="card-content">
-                <div class="message-box">
-                    <h2><i class="fas fa-gift"></i> A Special Message</h2>
-                    <p>This Valentine's Day, I wanted to do something special to show you how much you mean to me. You make every day brighter and every moment more meaningful.</p>
-                </div>
-                
-                <div class="button-container">
-                    <div class="gift-box" id="giftBox">
-                        <div class="gift-base"></div>
-                        <div class="ribbon ribbon-horizontal"></div>
-                        <div class="ribbon ribbon-vertical"></div>
-                        <div class="ribbon-bow"></div>
-                        <div class="gift-lid"></div>
-                        <div class="gift-message" id="giftMessage">
-                            Can I be your girlfriend?
-                        </div>
-                    </div>
-                </div>
-                <div class="gift-instruction">
-                    <i class="fas fa-hand-point-up"></i> Click the gift to open it!
-                </div>
-                
-                <div class="proposal-container" id="proposalContainer">
-                    <div class="proposal-text">Can I be your girlfriend?</div>
-                    <div class="response-buttons">
-                        <button class="response-btn yes-btn" id="yesBtn">YES! <i class="fas fa-heart"></i></button>
-                        <button class="response-btn no-btn" id="noBtn">No</button>
-                    </div>
-                </div>
-                
-                <div class="playlist-container" id="playlistContainer">
-                    <h2 class="playlist-title"><i class="fab fa-spotify"></i> For You: Our Playlist</h2>
-                    <p class="playlist-description">I've put together a collection of songs that remind me of you and our special moments together. Scan the QR code or click the link below to listen!</p>
-                    
-                    <div class="qr-code"></div>
-                    
-                    <a href="https://open.spotify.com/playlist/6FF9QQMTbt2tVxKWy1cj4Q?si=a58c552501ef46f0" target="_blank" class="spotify-link">
-                        <i class="fab fa-spotify"></i> Open Our Playlist in Spotify
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer">
-            Made with <i class="fas fa-heart" style="color: #d32f2f;"></i> for Cesca on Valentine's Day
-        </div>
+      </div>
     </div>
 
-    <script>
-        const giftBox = document.getElementById('giftBox');
-        const giftMessage = document.getElementById('giftMessage');
-        const proposalContainer = document.getElementById('proposalContainer');
-        const yesBtn = document.getElementById('yesBtn');
-        const noBtn = document.getElementById('noBtn');
-        const playlistContainer = document.getElementById('playlistContainer');
-        const snoopyImage = document.getElementById('snoopyImage');
-        let giftOpened = false;
-        
-        function createHearts() {
-            const container = document.querySelector('.container');
-            for (let i = 0; i < 25; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.innerHTML = '<i class="fas fa-heart"></i>';
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.top = Math.random() * 100 + 'vh';
-                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-                heart.style.opacity = Math.random() * 0.5 + 0.1;
-                heart.style.animation = `float ${Math.random() * 10 + 10}s linear infinite`;
-                heart.style.animationDelay = Math.random() * 5 + 's';
-                container.appendChild(heart);
-            }
-        }
-        
-        function createFireworks() {
-            const container = document.querySelector('.container');
-            const colors = ['#ff5252', '#ffeb3b', '#4caf50', '#2196f3', '#9c27b0'];
-            
-            for (let i = 0; i < 50; i++) {
-                const firework = document.createElement('div');
-                firework.className = 'firework';
-                firework.style.left = Math.random() * 100 + 'vw';
-                firework.style.top = Math.random() * 100 + 'vh';
-                firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                firework.style.boxShadow = `0 0 10px ${firework.style.backgroundColor}`;
-                container.appendChild(firework);
-                
-                setTimeout(() => {
-                    firework.style.animation = `explode ${Math.random() * 0.5 + 0.5}s forwards`;
-                }, Math.random() * 1000);
-                
-                setTimeout(() => firework.remove(), 1500);
-            }
-        }
-        
-        function createConfetti() {
-            const container = document.querySelector('.container');
-            const confettiColors = ['#d32f2f', '#ffeb3b', '#4caf50', '#2196f3', '#ffffff'];
-            
-            for (let i = 0; i < 150; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'heart';
-                confetti.innerHTML = '<i class="fas fa-heart"></i>';
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.top = '-20px';
-                confetti.style.color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
-                confetti.style.fontSize = (Math.random() * 15 + 10) + 'px';
-                confetti.style.opacity = Math.random() * 0.7 + 0.3;
-                container.appendChild(confetti);
-                
-                const animationDuration = Math.random() * 3 + 2;
-                confetti.style.animation = `float ${animationDuration}s linear forwards`;
-                setTimeout(() => confetti.remove(), animationDuration * 1000);
-            }
-        }
-        
-        function startSnoopyAnimation() {
-            snoopyImage.style.left = '-200px';
-            snoopyImage.style.animation = 'walk 10s linear forwards';
-            snoopyImage.style.animationDelay = '1s';
-            
-            setTimeout(() => {
-                snoopyImage.style.animation = 'none';
-                snoopyImage.style.animation = 'pulse 1s infinite alternate';
-            }, 11000);
-        }
-        
-        giftBox.addEventListener('click', function() {
-            if (!giftOpened) {
-                giftOpened = true;
-                giftBox.classList.add('opened');
-                
-                setTimeout(() => {
-                    giftMessage.style.display = 'flex';
-                    
-                    setTimeout(() => {
-                        document.querySelector('.gift-instruction').style.display = 'none';
-                        proposalContainer.style.display = 'block';
-                        proposalContainer.style.animation = 'fadeIn 1s forwards';
-                        
-                        createFireworks();
-                        setTimeout(createConfetti, 500);
-                        setTimeout(createFireworks, 1000);
-                        
-                        snoopyImage.style.animation = 'pulse 0.5s infinite alternate';
-                    }, 1000);
-                }, 500);
-            }
-        });
-        
-        yesBtn.addEventListener('click', function() {
-            createFireworks();
-            createConfetti();
-            
-            proposalContainer.style.display = 'none';
-            playlistContainer.style.display = 'block';
-            playlistContainer.style.animation = 'fadeIn 1s forwards';
-            
-            setTimeout(createFireworks, 300);
-            setTimeout(createConfetti, 600);
-            setTimeout(createFireworks, 900);
-        });
-        
-        noBtn.addEventListener('click', function() {
-            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-            
-            noBtn.style.position = 'absolute';
-            noBtn.style.left = x + 'px';
-            noBtn.style.top = y + 'px';
-            
-            yesBtn.style.transform = 'scale(1.2)';
-            yesBtn.style.transition = 'transform 0.3s';
-            
-            alert("Just kidding! You have to click YES! 😉");
-        });
-        
-        window.addEventListener('DOMContentLoaded', function() {
-            createHearts();
-            startSnoopyAnimation();
-            window.scrollTo(0, 0);
-            
-            snoopyImage.addEventListener('click', function() {
-                createConfetti();
-                snoopyImage.style.transform = 'scale(1.2)';
-                setTimeout(() => snoopyImage.style.transform = 'scale(1)', 300);
-            });
-            
-            giftBox.addEventListener('mouseenter', function() {
-                if (!giftOpened) {
-                    giftBox.style.transform = 'scale(1.05)';
-                }
-            });
-            
-            giftBox.addEventListener('mouseleave', function() {
-                if (!giftOpened) {
-                    giftBox.style.transform = 'scale(1)';
-                }
-            });
-        });
-    </script>
+    <div class="hidden-question" id="hiddenQuestion">
+      <h2 class="red">Will you be my girlfriend? 🥺❤️</h2>
+      <div class="buttons">
+        <button class="yes" onclick="yesClicked()">Yes</button>
+        <button class="no" onclick="noClicked()">No</button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function yesClicked() {
+      window.location.href = "https://open.spotify.com/playlist/6FF9QQMTbt2tVxKWy1cj4Q?si=8258c92a38dd49f7";
+    }
+
+            function openBox() {
+      const cover = document.getElementById('giftCover');
+      cover.classList.add('open');
+    }
+, 400);
+    }
+
+    function noClicked() {
+      alert("are you sure? 😭 try again");
+    }
+
+    // floating hearts
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerText = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (4 + Math.random() * 3) + 's';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 7000);
+    }, 600);
+  </script>
+
 </body>
 </html>
