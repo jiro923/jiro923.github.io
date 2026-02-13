@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -487,7 +487,7 @@
                     
                     <div class="signature">
                         With love,<br>
-                        [Your Name] 💕
+                        Anna
                     </div>
                 </div>
             </div>
