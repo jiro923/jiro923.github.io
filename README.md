@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Cesca </title>
+    <title>For Cesca</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -52,11 +52,11 @@
             border: 3px solid #d32f2f;
         }
         
-        /* BOX 1: Snoopy Box */
+        /* BOX 1: Snoopy Box - TRANSPARENT BACKGROUND */
         .snoopy-box {
-            background-color: #d32f2f;
-            border-radius: 15px;
+            background-color: transparent;
             border: 5px dashed #ffeb3b;
+            border-radius: 15px;
             height: 250px;
             position: relative;
             margin-bottom: 30px;
@@ -335,10 +335,9 @@
             <div class="subtitle">For someone very special...</div>
         </div>
         
-        <!-- BOX 1: Snoopy Box -->
+        <!-- BOX 1: Snoopy Box (No background) -->
         <div class="snoopy-box">
-            <img src="<img width="426" height="586" alt="snoopy-removebg-preview" src="https://github.com/user-attachments/assets/2ef006e7-cb0d-4c19-adab-b951e08d0bd4" />
-" alt="Snoopy" class="snoopy-img" id="snoopyImage">
+            <img src="https://www.pngmart.com/files/22/Snoopy-PNG-Isolated-HD.png" alt="Snoopy" class="snoopy-img" id="snoopyImage">
             <div class="speech-bubble">
                 <p>Hello <span class="cesca-name">Cesca</span>, I really had a great time with you today. Thank you for this!</p>
             </div>
