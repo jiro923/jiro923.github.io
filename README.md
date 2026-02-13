@@ -483,8 +483,6 @@
                     
                     <p>Thank you for this day. Here is to our first Valentine's Day and many more.</p>
                     
-                    <p>I hope you understand.</p>
-                    
                     <div class="signature">
                         With love,<br>
                         Anna
