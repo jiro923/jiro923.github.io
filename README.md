@@ -445,7 +445,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1><i class="fas fa-heart"></i> A Snoopy Valentine</h1>
+            <h1><i class="fas fa-heart"></i> Happy Valentines Day </h1>
             <div class="subtitle">For someone very special...</div>
         </div>
         
