@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Cesca - A Snoopy Valentine</title>
+    <title>For Cesca </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -337,7 +337,8 @@
         
         <!-- BOX 1: Snoopy Box -->
         <div class="snoopy-box">
-            <img src="https://www.pngmart.com/files/22/Snoopy-PNG-Isolated-HD.png" alt="Snoopy" class="snoopy-img" id="snoopyImage">
+            <img src="<img width="426" height="586" alt="snoopy-removebg-preview" src="https://github.com/user-attachments/assets/2ef006e7-cb0d-4c19-adab-b951e08d0bd4" />
+" alt="Snoopy" class="snoopy-img" id="snoopyImage">
             <div class="speech-bubble">
                 <p>Hello <span class="cesca-name">Cesca</span>, I really had a great time with you today. Thank you for this!</p>
             </div>
@@ -369,7 +370,7 @@
         
         <!-- Playlist (appear after YES) -->
         <div class="playlist-container" id="playlistContainer">
-            <h2 class="playlist-title"><i class="fab fa-spotify"></i> For You: Our Playlist</h2>
+            <h2 class="playlist-title"><i class="fab fa-spotify"></i> For My GirlFriend :D: Our Playlist</h2>
             <p class="playlist-description">Songs that remind me of you. Click below to listen!</p>
             
             <a href="https://open.spotify.com/playlist/6FF9QQMTbt2tVxKWy1cj4Q?si=a58c552501ef46f0" target="_blank" class="spotify-link">
