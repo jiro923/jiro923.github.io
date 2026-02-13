@@ -115,7 +115,7 @@
             border-radius: 10px;
         }
         
-        /* BOX 2: Message Box */
+        /* BOX 2: Message Box - CLICKABLE */
         .message-box {
             background-color: #ffebee;
             border-radius: 15px;
@@ -123,6 +123,14 @@
             padding: 25px;
             margin-bottom: 30px;
             text-align: left;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .message-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(211, 47, 47, 0.2);
+            background-color: #ffe0e0;
         }
         
         .message-box h2 {
@@ -135,6 +143,110 @@
             font-size: 1.2rem;
             color: #5d4037;
             line-height: 1.6;
+        }
+        
+        .click-hint {
+            text-align: center;
+            margin-top: 15px;
+            color: #d32f2f;
+            font-size: 1rem;
+            font-style: italic;
+        }
+        
+        /* POP-UP MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 20px;
+            border: 8px solid #ffeb3b;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: modalPop 0.5s ease;
+        }
+        
+        .modal-content::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        .modal-content::-webkit-scrollbar-track {
+            background: #ffebee;
+            border-radius: 10px;
+        }
+        
+        .modal-content::-webkit-scrollbar-thumb {
+            background: #d32f2f;
+            border-radius: 10px;
+        }
+        
+        @keyframes modalPop {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #d32f2f;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .close-modal:hover {
+            background-color: #ffebee;
+            transform: scale(1.1);
+        }
+        
+        .letter-content {
+            color: #5d4037;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: left;
+            padding: 20px 10px;
+        }
+        
+        .letter-content p {
+            margin-bottom: 20px;
+        }
+        
+        .letter-content .signature {
+            font-weight: bold;
+            color: #d32f2f;
+            font-size: 1.3rem;
+            margin-top: 30px;
+            text-align: right;
+            border-top: 2px dashed #ffeb3b;
+            padding-top: 20px;
         }
         
         /* BOX 3: Gift Box */
@@ -313,6 +425,8 @@
             .gift-question { font-size: 1.8rem; }
             .response-buttons { flex-direction: column; gap: 20px; }
             .response-btn { padding: 15px 30px; font-size: 1.5rem; }
+            .modal-content { padding: 20px; }
+            .letter-content { font-size: 1rem; }
         }
         
         @media (max-width: 480px) {
@@ -335,7 +449,7 @@
             <div class="subtitle">For someone very special...</div>
         </div>
         
-        <!-- BOX 1: Snoopy Box (No background) -->
+        <!-- BOX 1: Snoopy Box -->
         <div class="snoopy-box">
             <img src="https://www.pngmart.com/files/22/Snoopy-PNG-Isolated-HD.png" alt="Snoopy" class="snoopy-img" id="snoopyImage">
             <div class="speech-bubble">
@@ -343,10 +457,40 @@
             </div>
         </div>
         
-        <!-- BOX 2: Message Box -->
-        <div class="message-box">
-            <h2>A Special Message</h2>
-            <p>This Valentine's Day, I wanted to do something special to show you how much you mean to me. You make every day brighter.</p>
+        <!-- BOX 2: Message Box - CLICK FOR LETTER -->
+        <div class="message-box" id="messageBox">
+            <h2>A Special Message 💌</h2>
+            <p>I wrote you a letter. Click here to read it...</p>
+            <div class="click-hint">
+                <i class="fas fa-hand-point-up"></i> Click to open
+            </div>
+        </div>
+        
+        <!-- POP-UP MODAL (Letter) -->
+        <div class="modal" id="letterModal">
+            <div class="modal-content">
+                <span class="close-modal" id="closeModal">&times;</span>
+                <div class="letter-content">
+                    <p>Firstly, I would like to thank you for making me your date for this Valentine's Day.</p>
+                    
+                    <p>As you know, I had told myself that I was not planning on talking to someone again, but I am so glad you ruined that, Cesca. Thank you for making my heart happy.</p>
+                    
+                    <p>I want to thank you for so many things. I will never get tired of saying that I am so grateful to have you. You are such a good person, and I will cherish that. I am so lucky that you chose me. You are a good human being, you are a good sibling, and you are a good daughter—I know you think that you are not, but you are, baby. And you are so good to me. I hope the world notices how kind you really are.</p>
+                    
+                    <p>You are very pretty and cute. I do not understand how you are asking me if you are maganda; there was never a choice –– you are pretty as you are. I zone out and I just stare at you without you even knowing it. I just love to admire the shape of your face, the shape of your nose, and your eyes that shine when you look at me while smiling. I love it when you smile; as cliché as it is, it is all true, baby –– you are truly beautiful.</p>
+                    
+                    <p>I am sorry for the world we live in, that some people do not accept you or the beautiful things that we have. If I were God and were to create the world again, I would only create people with a good heart. I do not understand how people look at us when we hold our hands and think that it is a sin. I am so sorry that you have to live in this world. I hope one day we can go somewhere that at least more people accept us.</p>
+                    
+                    <p>Thank you for this day. Here is to our first Valentine's Day and many more.</p>
+                    
+                    <p>I hope you understand.</p>
+                    
+                    <div class="signature">
+                        With love,<br>
+                        [Your Name] 💕
+                    </div>
+                </div>
+            </div>
         </div>
         
         <!-- BOX 3: Gift Box -->
@@ -389,6 +533,12 @@
         const noBtn = document.getElementById('noBtn');
         const playlistContainer = document.getElementById('playlistContainer');
         const snoopyImage = document.getElementById('snoopyImage');
+        
+        // Letter modal elements
+        const messageBox = document.getElementById('messageBox');
+        const letterModal = document.getElementById('letterModal');
+        const closeModal = document.getElementById('closeModal');
+        
         let giftOpened = false;
         
         function startSnoopyAnimation() {
@@ -396,6 +546,23 @@
             snoopyImage.style.animation = 'walk 10s linear forwards';
             snoopyImage.style.animationDelay = '1s';
         }
+        
+        // Open letter modal when message box is clicked
+        messageBox.addEventListener('click', function() {
+            letterModal.style.display = 'flex';
+        });
+        
+        // Close modal when X is clicked
+        closeModal.addEventListener('click', function() {
+            letterModal.style.display = 'none';
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === letterModal) {
+                letterModal.style.display = 'none';
+            }
+        });
         
         giftBox.addEventListener('click', function() {
             if (!giftOpened) {
