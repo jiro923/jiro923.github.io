@@ -471,7 +471,7 @@
             <div class="modal-content">
                 <span class="close-modal" id="closeModal">&times;</span>
                 <div class="letter-content">
-                    <p>Firstly, I would like to thank you for making me your date for this Valentine's Day.</p>
+                    <p>Firstly, I would like to thank you for coming here.</p>
                     
                     <p>As you know, I had told myself that I was not planning on talking to someone again, but I am so glad you ruined that, Cesca. Thank you for making my heart happy.</p>
                     
@@ -511,7 +511,7 @@
         
         <!-- Playlist (appear after YES) -->
         <div class="playlist-container" id="playlistContainer">
-            <h2 class="playlist-title"><i class="fab fa-spotify"></i> For My GirlFriend :D: Our Playlist</h2>
+            <h2 class="playlist-title"><i class="fab fa-spotify"></i> For My GirlFriend: Our Playlist</h2>
             <p class="playlist-description">Songs that remind me of you. Click below to listen!</p>
             
             <a href="https://open.spotify.com/playlist/6FF9QQMTbt2tVxKWy1cj4Q?si=a58c552501ef46f0" target="_blank" class="spotify-link">
